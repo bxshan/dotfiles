@@ -38,6 +38,7 @@ lsp_zero.format_on_save({
   servers = {
     ['jdtls'] = {'java'},
     ['pylsp'] = {'python'},
+    ['clangd'] = {'c++'},
   }
 })
 
@@ -49,6 +50,7 @@ require('mason-lspconfig').setup({
     function(server_name)
       require('lspconfig')['jdtls'].setup({})
       require('lspconfig')['pylsp'].setup({})
+      require('lspconfig')['clangd'].setup({})
     end,
   },
 })
