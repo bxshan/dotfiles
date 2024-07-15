@@ -14,6 +14,8 @@ alias neofetch="neofetch --memory_percent on --memory_unit gib --refresh_rate on
 alias actf="genact --speed-factor 30" 
 alias acts="genact --speed-factor 2"
 
+alias gcc="g++ -std=c++11"
+
 # IF USING NVIM OR VIM
 alias vi="nvim"
 eval "$(gh copilot alias -- zsh)"

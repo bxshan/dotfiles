@@ -124,10 +124,23 @@ return require('packer').startup(function(use)
   }
   ]]--
 
+  -- VIM FUGITIVE GIT PLUGIN --
   use 'tpope/vim-fugitive'
 
+  -- GITSIGNS GIT SIGNS --
   use 'lewis6991/gitsigns.nvim'
 
+  -- GITHUB COPILOT --
   use 'github/copilot.vim'
+
+  -- HIGHLIGHT UNDO --
+  use 'tzachar/highlight-undo.nvim' 
+
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+        require('Comment').setup()
+    end
+  }
 
 end)

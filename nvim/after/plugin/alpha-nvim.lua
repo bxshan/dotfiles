@@ -321,7 +321,7 @@ end
 -- Set menu
 dashboard.section.buttons.val = {
     dashboard.button( "w", "󰖬  > 维基百科研究", ":cd ~/Desktop/Desktop - box mac/src/pioneer_boxuan/<CR> | :Ex<CR>"),
-    dashboard.button( "k", "󱚣  > Karel 项目", ":cd ~/Desktop/Programming Projects/Karel Projects/Chapter7Shan/<CR> | :Ex<CR>"),
+    dashboard.button( "k", "󱚣  > GridWorld项目", ":cd ~/Desktop/Programming Projects/GridWorldCaseStudy/GridWorldCode/projects/boxBug <CR> | :Ex<CR>"),
     dashboard.button( "r", "  > 最近修改"   , ":Telescope oldfiles<CR>"),
     dashboard.button( "s", "  > 设置" , ":cd ~/.config/nvim/<CR> | :Ex<CR>"),
     dashboard.button( "q", "󰅚  > 关闭 NVIM", ":qa<CR>"),
