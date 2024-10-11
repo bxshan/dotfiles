@@ -47,7 +47,9 @@ require('lualine').setup {
         newfile = '[New]',     -- Text to show for newly created file before first write
       }
     }},
-    lualine_c = {return_text, {
+    lualine_c = {return_text
+    --[[
+    , {
       'diagnostics',
 
       -- Table of diagnostic sources, available sources are:
@@ -70,7 +72,9 @@ require('lualine').setup {
       colored = true,           -- Displays diagnostics status in color if set to true.
       update_in_insert = false, -- Update diagnostics in insert mode.
       always_visible = false,   -- Show diagnostics even if there are none.
-    }},
+    }
+    --]] 
+    },
     lualine_x = {'selectioncount', "os.date('%m%d%Y｜%H%M%S')"},
     lualine_y = {'filesize', {
       'filetype',

@@ -13,8 +13,8 @@ alias matrix="unimatrix -f -s 92 -l kknnsss"
 alias neofetch="neofetch --memory_percent on --memory_unit gib --refresh_rate on --colors 2 7 4 3 7 7 --block_range 0 7 --block_width 5 --block_height 1"
 alias actf="genact --speed-factor 30" 
 alias acts="genact --speed-factor 2"
-
 alias gcc="g++ -std=c++11"
+alias zoxidelist="zoxide query -l -s"
 
 # IF USING NVIM OR VIM
 alias vi="nvim"
@@ -150,4 +150,7 @@ export CLASSPATH
 neofetch --memory_percent on --memory_unit gib --refresh_rat    e on --colors 2 7 4 3 7 7 --block_range 0 7 --block_width 5 --block_height 1
 conda activate box
 eval "$(/opt/homebrew/bin/brew shellenv)"
-nvim
+eval "$(zoxide init --cmd cd zsh)"
+export LANG=zh_CN.UTF-8
+# temporarily disabled
+# nvim

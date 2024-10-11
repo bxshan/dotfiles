@@ -136,11 +136,17 @@ return require('packer').startup(function(use)
   -- HIGHLIGHT UNDO --
   use 'tzachar/highlight-undo.nvim' 
 
+  -- COMMENT.NVIM COMMENTING PLUGIN --
   use {
     'numToStr/Comment.nvim',
     config = function()
         require('Comment').setup()
     end
+  }
+
+  use {
+    'alanfortlink/blackjack.nvim',
+    requires = {'nvim-lua/plenary.nvim'},
   }
 
 end)

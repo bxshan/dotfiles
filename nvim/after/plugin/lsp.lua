@@ -23,7 +23,7 @@ vim.lsp.diagnostic.on_publish_diagnostics, {
 
 lsp_zero.set_sign_icons({
   --error = '✘',
-  error = ' !',
+  error = '',
   --warn = '▲',
   warn = '',
   hint = '⚑',
@@ -36,7 +36,7 @@ lsp_zero.format_on_save({
     timeout_ms = 10000,
   },
   servers = {
-    ['jdtls'] = {'java'},
+    -- ['jdtls'] = {'java'},
     ['pylsp'] = {'python'},
     ['clangd'] = {'c++'},
   }
@@ -48,7 +48,7 @@ require('mason-lspconfig').setup({
   ensure_installed = {"jdtls", "pylsp"},
   handlers = {
     function(server_name)
-      require('lspconfig')['jdtls'].setup({})
+      -- require('lspconfig')['jdtls'].setup({})
       require('lspconfig')['pylsp'].setup({})
       require('lspconfig')['clangd'].setup({})
     end,
