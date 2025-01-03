@@ -4,7 +4,6 @@
 # # # # # #
 # ALIASES #
 # # # # # #
-
 alias ipaddr="curl http://ipecho.net/plain; echo"
 alias gavinisdumb="yes "gavin is dumb""
 alias la="ls -a"
@@ -13,11 +12,15 @@ alias matrix="unimatrix -f -s 92 -l kknnsss"
 alias neofetch="neofetch --memory_percent on --memory_unit gib --refresh_rate on --colors 2 7 4 3 7 7 --block_range 0 7 --block_width 5 --block_height 1"
 alias actf="genact --speed-factor 30" 
 alias acts="genact --speed-factor 2"
-alias gcc="g++ -std=c++11"
+alias gcc="g++ -w -std=c++11 -O2 -pedantic -Wfloat-equal -o a.out"
 alias zoxidelist="zoxide query -l -s"
+# debug
+alias gccsa="gcc -fsanitize=address"
+alias gccsu="gcc -fsanitize=undefined"
 
 # IF USING NVIM OR VIM
 alias vi="nvim"
+alias vir="nvim -R"
 eval "$(gh copilot alias -- zsh)"
 
 # Path to your oh-my-zsh installation.
@@ -90,7 +93,13 @@ ZSH_THEME="bureau"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+  git
+  # occasionally annoying
+  # zsh-autosuggestions # bound '`' key to accept suggestion
+  zsh-syntax-highlighting
+  you-should-use
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -147,10 +156,16 @@ export CLASSPATH
 # EXECUTE #
 # # # # # #
 
+# bindkey begin
+bindkey '`' autosuggest-accept # `
+# bindkey end
+
 neofetch --memory_percent on --memory_unit gib --refresh_rat    e on --colors 2 7 4 3 7 7 --block_range 0 7 --block_width 5 --block_height 1
 conda activate box
 eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(zoxide init --cmd cd zsh)"
 export LANG=zh_CN.UTF-8
+echo "\t启动！"
+cd src
 # temporarily disabled
 # nvim
