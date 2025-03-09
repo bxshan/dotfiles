@@ -6,7 +6,9 @@ require('telescope').setup{
       ".ctxt",
       ".class",
       ".bluej",
-      ".out"
+      ".out",
+      ".txt",
+      ".java",
     }
   }
 }
