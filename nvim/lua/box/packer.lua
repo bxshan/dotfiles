@@ -212,5 +212,11 @@ return require('packer').startup(function(use)
       require('cord').setup()
     end,
   }
+  
+  use {
+    'xeluxee/competitest.nvim',
+    requires = 'MunifTanjim/nui.nvim',
+    config = function() require('competitest').setup() end
+  }
 
 end)
