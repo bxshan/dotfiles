@@ -158,6 +158,12 @@ _G.packer_plugins = {
     path = "/Users/box/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
+  neogen = {
+    config = { "\27LJ\2\n8\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\vneogen\frequire\0" },
+    loaded = true,
+    path = "/Users/box/.local/share/nvim/site/pack/packer/start/neogen",
+    url = "https://github.com/danymat/neogen"
+  },
   ["netrw.nvim"] = {
     loaded = true,
     path = "/Users/box/.local/share/nvim/site/pack/packer/start/netrw.nvim",
@@ -219,30 +225,34 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: competitest.nvim
-time([[Config for competitest.nvim]], true)
-try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\16competitest\frequire\0", "config", "competitest.nvim")
-time([[Config for competitest.nvim]], false)
--- Config for: cord.nvim
-time([[Config for cord.nvim]], true)
-try_loadstring("\27LJ\2\n2\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\tcord\frequire\0", "config", "cord.nvim")
-time([[Config for cord.nvim]], false)
--- Config for: alpha-nvim
-time([[Config for alpha-nvim]], true)
-try_loadstring("\27LJ\2\na\0\0\5\0\5\0\n6\0\0\0'\2\1\0B\0\2\0029\0\2\0006\2\0\0'\4\3\0B\2\2\0029\2\4\2B\0\2\1K\0\1\0\vconfig\27alpha.themes.dashboard\nsetup\nalpha\frequire\0", "config", "alpha-nvim")
-time([[Config for alpha-nvim]], false)
 -- Config for: Comment.nvim
 time([[Config for Comment.nvim]], true)
 try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0", "config", "Comment.nvim")
 time([[Config for Comment.nvim]], false)
--- Config for: LuaSnip
-time([[Config for LuaSnip]], true)
-try_loadstring("\27LJ\2\nO\0\0\2\1\2\0\t-\0\0\0009\0\0\0B\0\1\2\15\0\0\0X\1\3€-\0\0\0009\0\1\0B\0\1\1K\0\1\0\0À\19expand_or_jump\23expand_or_jumpableC\0\0\3\1\2\0\v-\0\0\0009\0\0\0)\2\1\0B\0\2\2\15\0\0\0X\1\4€-\0\0\0009\0\1\0)\2\1\0B\0\2\1K\0\1\0\0À\tjump\rjumpableC\0\0\3\1\2\0\v-\0\0\0009\0\0\0)\2ÿÿB\0\2\2\15\0\0\0X\1\4€-\0\0\0009\0\1\0)\2ÿÿB\0\2\1K\0\1\0\0À\tjump\rjumpableM\0\0\3\1\2\0\n-\0\0\0009\0\0\0B\0\1\2\15\0\0\0X\1\4€-\0\0\0009\0\1\0)\2\1\0B\0\2\1K\0\1\0\0À\18change_choice\18choice_active’\1\0\1\v\0\a\0\0246\1\0\0006\3\1\0009\3\2\3B\1\2\4H\4\16€6\6\3\0009\6\4\6\18\b\4\0'\t\5\0\18\n\0\0&\t\n\tB\6\3\2\15\0\6\0X\a\a€6\6\1\0009\6\2\6+\a\0\0<\a\4\0066\6\6\0\18\b\4\0B\6\2\1F\4\3\3R\4î\127K\0\1\0\frequire\6^\tfind\vstring\vloaded\fpackage\npairsO\0\0\3\2\3\0\b-\0\0\0009\0\0\0B\0\1\1-\0\1\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\0À\1À\17box.snippets\19reload_package\fcleanupå\2\1\0\n\0\24\0.6\0\0\0'\2\1\0B\0\2\0016\0\0\0'\2\2\0B\0\2\0024\1\0\0003\2\4\0=\2\3\0013\2\6\0=\2\5\0013\2\b\0=\2\a\0013\2\n\0=\2\t\0013\2\f\0=\2\v\0013\2\14\0=\2\r\0016\2\15\0009\2\16\0029\2\17\0025\3\18\0005\4\19\0\18\5\2\0\18\a\3\0'\b\20\0009\t\3\1B\5\4\1\18\5\2\0\18\a\3\0'\b\21\0009\t\a\1B\5\4\1\18\5\2\0\18\a\3\0'\b\22\0009\t\t\1B\5\4\1\18\5\2\0\18\a\4\0'\b\23\0009\t\r\1B\5\4\0012\0\0€K\0\1\0\a,r\n<c-l>\n<c-n>\n<C-R>\1\2\0\0\6n\1\3\0\0\6i\6s\bset\vkeymap\bvim\0\21refresh_snippets\0\19reload_package\0\18change_choice\0\14jump_prev\0\14jump_next\0\19expand_or_jump\fluasnip\17box.snippets\frequire\0", "config", "LuaSnip")
-time([[Config for LuaSnip]], false)
 -- Config for: codewindow.nvim
 time([[Config for codewindow.nvim]], true)
 try_loadstring("\27LJ\2\nW\0\0\3\0\4\0\b6\0\0\0'\2\1\0B\0\2\0029\1\2\0B\1\1\0019\1\3\0B\1\1\1K\0\1\0\27apply_default_keybinds\nsetup\15codewindow\frequire\0", "config", "codewindow.nvim")
 time([[Config for codewindow.nvim]], false)
+-- Config for: alpha-nvim
+time([[Config for alpha-nvim]], true)
+try_loadstring("\27LJ\2\na\0\0\5\0\5\0\n6\0\0\0'\2\1\0B\0\2\0029\0\2\0006\2\0\0'\4\3\0B\2\2\0029\2\4\2B\0\2\1K\0\1\0\vconfig\27alpha.themes.dashboard\nsetup\nalpha\frequire\0", "config", "alpha-nvim")
+time([[Config for alpha-nvim]], false)
+-- Config for: cord.nvim
+time([[Config for cord.nvim]], true)
+try_loadstring("\27LJ\2\n2\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\tcord\frequire\0", "config", "cord.nvim")
+time([[Config for cord.nvim]], false)
+-- Config for: neogen
+time([[Config for neogen]], true)
+try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\vneogen\frequire\0", "config", "neogen")
+time([[Config for neogen]], false)
+-- Config for: LuaSnip
+time([[Config for LuaSnip]], true)
+try_loadstring("\27LJ\2\nO\0\0\2\1\2\0\t-\0\0\0009\0\0\0B\0\1\2\15\0\0\0X\1\3€-\0\0\0009\0\1\0B\0\1\1K\0\1\0\0À\19expand_or_jump\23expand_or_jumpableC\0\0\3\1\2\0\v-\0\0\0009\0\0\0)\2\1\0B\0\2\2\15\0\0\0X\1\4€-\0\0\0009\0\1\0)\2\1\0B\0\2\1K\0\1\0\0À\tjump\rjumpableC\0\0\3\1\2\0\v-\0\0\0009\0\0\0)\2ÿÿB\0\2\2\15\0\0\0X\1\4€-\0\0\0009\0\1\0)\2ÿÿB\0\2\1K\0\1\0\0À\tjump\rjumpableM\0\0\3\1\2\0\n-\0\0\0009\0\0\0B\0\1\2\15\0\0\0X\1\4€-\0\0\0009\0\1\0)\2\1\0B\0\2\1K\0\1\0\0À\18change_choice\18choice_active’\1\0\1\v\0\a\0\0246\1\0\0006\3\1\0009\3\2\3B\1\2\4H\4\16€6\6\3\0009\6\4\6\18\b\4\0'\t\5\0\18\n\0\0&\t\n\tB\6\3\2\15\0\6\0X\a\a€6\6\1\0009\6\2\6+\a\0\0<\a\4\0066\6\6\0\18\b\4\0B\6\2\1F\4\3\3R\4î\127K\0\1\0\frequire\6^\tfind\vstring\vloaded\fpackage\npairsO\0\0\3\2\3\0\b-\0\0\0009\0\0\0B\0\1\1-\0\1\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\0À\1À\17box.snippets\19reload_package\fcleanupå\2\1\0\n\0\24\0.6\0\0\0'\2\1\0B\0\2\0016\0\0\0'\2\2\0B\0\2\0024\1\0\0003\2\4\0=\2\3\0013\2\6\0=\2\5\0013\2\b\0=\2\a\0013\2\n\0=\2\t\0013\2\f\0=\2\v\0013\2\14\0=\2\r\0016\2\15\0009\2\16\0029\2\17\0025\3\18\0005\4\19\0\18\5\2\0\18\a\3\0'\b\20\0009\t\3\1B\5\4\1\18\5\2\0\18\a\3\0'\b\21\0009\t\a\1B\5\4\1\18\5\2\0\18\a\3\0'\b\22\0009\t\t\1B\5\4\1\18\5\2\0\18\a\4\0'\b\23\0009\t\r\1B\5\4\0012\0\0€K\0\1\0\a,r\n<c-l>\n<c-n>\n<C-R>\1\2\0\0\6n\1\3\0\0\6i\6s\bset\vkeymap\bvim\0\21refresh_snippets\0\19reload_package\0\18change_choice\0\14jump_prev\0\14jump_next\0\19expand_or_jump\fluasnip\17box.snippets\frequire\0", "config", "LuaSnip")
+time([[Config for LuaSnip]], false)
+-- Config for: competitest.nvim
+time([[Config for competitest.nvim]], true)
+try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\16competitest\frequire\0", "config", "competitest.nvim")
+time([[Config for competitest.nvim]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-web-devicons ]]
