@@ -1,66 +1,113 @@
 require('cord').setup {
-  usercmds = true,                              -- Enable user commands
-  log_level = 'error',                          -- One of 'trace', 'debug', 'info', 'warn', 'error', 'off'
-  timer = {
-    interval = 2000,                            -- Interval between presence updates in milliseconds (min 500, default 1500)
-    reset_on_idle = false,                      -- Reset start timestamp on idle
-    reset_on_change = false,                    -- Reset start timestamp on presence change
-  },
+  enabled = true,
+  log_level = vim.log.levels.OFF,
   editor = {
-    image = nil,                                -- Image ID or URL in case a custom client id is provided
-    client = 'neovim',                          -- vim, neovim, lunarvim, nvchad, astronvim or your application's client id
-    --tooltip = 'The Superior Text Editor',       -- Text to display when hovering over the editor's image
-    tooltip = '> vscode',       -- Text to display when hovering over the editor's image
+    client = 'neovim',
+    tooltip = 'better than vscode',
+    icon = nil,
   },
   display = {
-    show_time = true,                           -- Display start timestamp
-    show_repository = true,                     -- Display 'View repository' button linked to repository url, if any
-    show_cursor_position = false,               -- Display line and column number of cursor's position
-    swap_fields = false,                        -- If enabled, workspace is displayed first
-    swap_icons = false,                         -- If enabled, editor is displayed on the main image
-    workspace_blacklist = {},                   -- List of workspace names that will hide rich presence
+    theme = 'atom',
+    flavor = 'light',
+    swap_fields = false,
+    swap_icons = true,
   },
-  lsp = {
-    show_problem_count = false,                 -- Display number of diagnostics problems
-    severity = 1,                               -- 1 = Error, 2 = Warning, 3 = Info, 4 = Hint
-    scope = 'workspace',                        -- buffer or workspace
+  timestamp = {
+    enabled = true,
+    reset_on_idle = false,
+    reset_on_change = false,
   },
   idle = {
-    enable = true,                              -- Enable idle status
-    show_status = true,                         -- Display idle status, disable to hide the rich presence on idle
-    timeout = 300000,                           -- Timeout in milliseconds after which the idle status is set, 0 to display immediately
-    disable_on_focus = false,                   -- Do not display idle status when neovim is focused
-    text = 'Idle',                              -- Text to display when idle
-    tooltip = '💤',                             -- Text to display when hovering over the idle image
-    icon = nil,                                 -- Replace the default idle icon; either an asset ID or a URL
+    enabled = true,
+    timeout = 300000,
+    show_status = true,
+    ignore_focus = true,
+    unidle_on_focus = true,
+    smart_idle = true,
+    details = 'Being Distracted',
+    state = nil,
+    tooltip = 'Idle',
+    icon = nil,
   },
   text = {
-    viewing = 'Viewing {}',                     -- Text to display when viewing a readonly file
-    editing = 'Editing {}',                     -- Text to display when editing a file
-    file_browser = 'Browsing files in {}',      -- Text to display when browsing files (Empty string to disable)
-    plugin_manager = 'Managing plugins in {}',  -- Text to display when managing plugins (Empty string to disable)
-    lsp_manager = 'Configuring LSP in {}',      -- Text to display when managing LSP servers (Empty string to disable)
-    vcs = 'Committing changes in {}',           -- Text to display when using Git or Git-related plugin (Empty string to disable)
-    workspace = 'In {}',                        -- Text to display when in a workspace (Empty string to disable)
-  },
+    workspace = function(opts) return 'In ' .. opts.workspace end,
+    viewing = function(opts) return 'Viewing ' .. opts.filename end,
+    --editing = function(opts) return 'Editing ' .. opts.filename end,
+    editing = function(opts) 
+      return string.format('Editing %s at %s:%s', opts.filename, opts.cursor_line, opts.cursor_char) 
+    end,
+    file_browser = function(opts) return 'Browsing files in ' .. opts.name end,
+    plugin_manager = function(opts) return 'Managing plugins in ' .. opts.name end,
+    lsp = function(opts) return 'Configuring LSP in ' .. opts.name end,
+    docs = function(opts) return 'Reading ' .. opts.name end,
+    vcs = function(opts) return 'Committing changes in ' .. opts.name end,
+    notes = function(opts) return 'Taking notes in ' .. opts.name end,
+    debug = function(opts) return 'Debugging in ' .. opts.name end,
+    test = function(opts) return 'Testing in ' .. opts.name end,
+    diagnostics = function(opts) return 'Fixing problems in ' .. opts.name end,
+    games = function(opts) return 'Playing ' .. opts.name end,
+    terminal = function(opts) return 'Running commands in ' .. opts.name end,
+    dashboard = 'Home',
+  }, 
+  --buttons = nil,
   buttons = {
-    {
-      label = 'View Repository',                -- Text displayed on the button
-      url = 'git',                              -- URL where the button leads to ('git' = automatically fetch Git repository URL)
-    },
-    -- {
-    --   label = 'View Plugin',
-    --   url = 'https://github.com/vyfor/cord.nvim',
-    -- }
+    --{
+    --  label = 'View Repository',
+    --  url = function(opts) return opts.repo_url end,
+    --},
+    --{
+    --  label = function(opts)
+    --    return 'Website'
+    --  end,
+    --  url = function(opts)
+    --    return 'github.com'
+    --  end
+    --}
   },
-  assets = nil,                                 -- Custom file icons, see the wiki*
-  -- assets = {
-  --   lazy = {                                 -- Vim filetype or file name or file extension = table or string
-  --     name = 'Lazy',                         -- Optional override for the icon name, redundant for language types
-  --     icon = 'https://example.com/lazy.png', -- Rich Presence asset name or URL
-  --     tooltip = 'lazy.nvim',                 -- Text to display when hovering over the icon
-  --     type = 'plugin_manager',               -- One of 'language', 'file_browser', 'plugin_manager', 'lsp_manager', 'vcs' or respective ordinals; defaults to 'language'
-  --   },
-  --   ['Cargo.toml'] = 'crates',
-  -- },
+  assets = nil,
+  variables = nil,
+  hooks = {
+    ready = nil,
+    shutdown = nil,
+    pre_activity = nil,
+    --pre_activity = function(opts, activity)
+    --  local date = os.date('*t')
+    --  date.hour, date.min, date.sec = 0, 0, 0
+    --  activity.timestamps.start = os.time(date)
+    --end,
+    post_activity = nil,
+    idle_enter = nil,
+    -- optionally, you can do one of the two:
+    -- A. also set local time for idle status, or
+    --idle_enter = function(opts, activity)
+    --  local date = os.date('*t')
+    --  date.hour, date.min, date.sec = 0, 0, 0
+    --  activity.timestamps.start = os.time(date)
+    --end,
+    idle_leave = nil,
+    workspace_change = nil,
+  },
+  plugins = nil,
+  advanced = {
+    plugin = {
+      autocmds = true,
+      cursor_update = 'on_hold',
+      match_in_mappings = true,
+    },
+    server = {
+      update = 'fetch',
+      pipe_path = nil,
+      executable_path = nil,
+      timeout = 300000,
+    },
+    discord = {
+      reconnect = {
+        enabled = true,
+        interval = 5000,
+        initial = true,
+      },
+    },
+  },
 }
+vim.keymap.set('n', '<leader>cp', function() require('cord.api.command').toggle_presence() end)
+vim.keymap.set('n', '<leader>ci', function() require('cord.api.command').toggle_idle_force() end)
