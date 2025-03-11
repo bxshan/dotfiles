@@ -228,4 +228,15 @@ return require('packer').startup(function(use)
     -- tag = "*"
   }
 
+  use({'hrsh7th/nvim-cmp'})
+  use({'hrsh7th/cmp-nvim-lsp'})
+
+  use {
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    "neovim/nvim-lspconfig",
+  }
+
+  use({'onsails/lspkind.nvim'})
+
 end)

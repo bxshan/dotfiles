@@ -135,5 +135,3 @@ require('competitest').setup {
 	open_received_contests = true,
 	replace_received_testcases = false,
 }
-vim.keymap.set('n', '<leader>rr', ":CompetiTest run<CR>")
-vim.keymap.set('n', '<leader>tt', ":CompetiTest add_testcase<CR>")

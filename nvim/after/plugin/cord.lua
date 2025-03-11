@@ -109,5 +109,3 @@ require('cord').setup {
     },
   },
 }
-vim.keymap.set('n', '<leader>cp', function() require('cord.api.command').toggle_presence() end)
-vim.keymap.set('n', '<leader>ci', function() require('cord.api.command').toggle_idle_force() end)
