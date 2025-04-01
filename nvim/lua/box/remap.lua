@@ -89,5 +89,5 @@ vim.api.nvim_create_user_command("VirtualTextToggle", function()
 	end
 	virtual_text_on = not virtual_text_on 
 end, { nargs = 0 })
-vim.keymap.set("", "<leader>tt", ":VirtualTextToggle<CR>", { noremap = true, silent = true })
+vim.keymap.set("", "<leader>vt", ":VirtualTextToggle<CR>", { noremap = true, silent = true })
 

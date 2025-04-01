@@ -21,89 +21,6 @@ return require('packer').startup(function(use)
   -- TREESITTER SYNTAX HIGHLIGHTING --
   use ('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
 
-  -- LUASNIP --
-  use({
-    --require("luasnip.loaders.from_snipmate").lazy_load({paths = "./snippets"}),
-    "L3MON4D3/LuaSnip",
-    config = function()
-      require('box.snippets')
-      
-      local ls = require('luasnip')
-
-      local M = {}
-
-      function M.expand_or_jump()
-        if ls.expand_or_jumpable() then
-          ls.expand_or_jump()
-        end
-      end
-
-      function M.jump_next()
-        if ls.jumpable(1) then
-          ls.jump(1)
-        end
-      end
-
-      function M.jump_prev()
-        if ls.jumpable(-1) then
-          ls.jump(-1)
-        end
-      end
-
-      function M.change_choice()
-        if ls.choice_active() then
-          ls.change_choice(1)
-        end
-      end
-
-      function M.reload_package(package_name)
-        for module_name, _ in pairs(package.loaded) do
-          if string.find(module_name, '^' .. package_name) then
-            package.loaded[module_name] = nil
-            require(module_name)
-          end
-        end
-      end
-
-      function M.refresh_snippets()
-        ls.cleanup()
-        M.reload_package('box.snippets')
-      end
-
-      local set = vim.keymap.set
-
-      local mode = { 'i', 's' }
-      local normal = { 'n' }
-
-      set(mode, '<C-R>', M.expand_or_jump)
-      set(mode, '<c-n>', M.jump_prev)
-      set(mode, '<c-l>', M.change_choice)
-      set(normal, ',r', M.refresh_snippets)
-    end,
-    -- follow latest release.
-    tag = "v2.3.0", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-    -- install jsregexp (optional!:).
-    run = "make install_jsregexp"
-
-
-  })
-
-  -- LSP-ZERO LSP --
-  --use {
-	--  'VonHeikemen/lsp-zero.nvim',
-	--  branch = 'v3.x',
-	--  requires = {
-	--	  --- Uncomment the two plugins below if you want to manage the language servers from neovim
-	--	  {'williamboman/mason.nvim'},
-	--	  {'williamboman/mason-lspconfig.nvim'},
-
-	--	  {'neovim/nvim-lspconfig'},
-	--	  {'hrsh7th/nvim-cmp'},
-	--	  {'hrsh7th/cmp-nvim-lsp'},
-	--	  {'L3MON4D3/LuaSnip'},
-	--  }
-  --}
-
   -- AUTOPAIRS AUTOMATICALLY PAIR BRACKETS AND QUOTES --
   use {
     "windwp/nvim-autopairs",
@@ -228,15 +145,34 @@ return require('packer').startup(function(use)
     -- tag = "*"
   }
 
-  use({'hrsh7th/nvim-cmp'})
-  use({'hrsh7th/cmp-nvim-lsp'})
-
+  -- MASON FOR LSPs --
   use {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
   }
 
+  -- idk what this is for -
   use({'onsails/lspkind.nvim'})
+
+  -- display keystrokes --
+  use({'nvzone/showkeys'})
+
+  -- and it only took ~10 hours to set up snippets --
+  -- not touching this bc it will probably break --
+  use{
+    'hrsh7th/nvim-cmp',
+    "hrsh7th/cmp-cmdline",
+    "saadparwaiz1/cmp_luasnip",
+    "rafamadriz/friendly-snippets",
+  }
+  use({'hrsh7th/cmp-nvim-lsp'})
+  use({
+    "L3MON4D3/LuaSnip",
+    -- follow latest release.
+    tag = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+    -- install jsregexp (optional!:).
+    run = "make install_jsregexp"
+  })
 
 end)

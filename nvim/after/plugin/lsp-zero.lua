@@ -26,7 +26,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
       return
     end
 
-    client.server_capabilities.semanticTokensProvider = nil
+    --client.server_capabilities.semanticTokensProvider = nil
     
     vim.keymap.set({'n', 'x'}, 'gq', function()
       vim.lsp.buf.format({async = false, timeout_ms = 10000})

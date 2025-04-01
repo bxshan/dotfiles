@@ -1,10 +1,8 @@
 local cmp = require('cmp')
+local luasnip = require('luasnip')
 local lspkind = require('lspkind')
-cmp.setup {
-  formatting = {
-    format = lspkind.cmp_format(),
-  },
-}
+local vscodesnippets = require("luasnip.loaders.from_vscode")
+vscodesnippets.lazy_load()
 
 local has_words_before = function()
   unpack = unpack or table.unpack
@@ -33,6 +31,15 @@ vim.api.nvim_set_hl(0, 'CmpItemKindUnit', { link='CmpItemKindKeyword' })
 vim.opt.pumheight = 7;
 
 cmp.setup({
+  snippet = {
+    -- REQUIRED - you must specify a snippet engine
+    expand = function(args)
+      luasnip.lsp_expand(args.body) -- For `luasnip` users.
+    end,
+  },
+  formatting = {
+    format = lspkind.cmp_format(),
+  },
   window = {
     completion = {
       winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
@@ -63,9 +70,18 @@ cmp.setup({
       and not context.in_syntax_group("Comment")
     end
   end,
-  sources = {
-    {name = 'nvim_lsp'},
-  },
+  --sources = {
+  --  {name = 'nvim_lsp'},
+  --  {name = 'luasnip'}, -- For luasnip users.
+  --},
+  -- https://www.reddit.com/r/neovim/comments/1gs66xy/prioritizing_snippets_over_lsp_or_others/
+  sources = cmp.config.sources({
+    { name = "luasnip" },
+  }, {
+    {
+      name = "nvim_lsp",
+    },
+  }),
   snippet = {
     expand = function(args)
       -- You need Neovim v0.10 to use vim.snippet
@@ -79,30 +95,39 @@ cmp.setup({
     --['<C-Space>'] = cmp.mapping.complete(),
     --['<C-e>'] = cmp.mapping.abort(),
     --['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-    ['<CR>'] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Insert,
-      select = true,
-    },
-
-    ['<Tab>'] = function(fallback)
-      if not cmp.select_next_item() then
-        if vim.bo.buftype ~= 'prompt' and has_words_before() then
-          cmp.complete()
+    ['<CR>'] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+            if luasnip.expandable() then
+                luasnip.expand()
+            else
+                cmp.confirm({
+                    select = true,
+                })
+            end
         else
-          fallback()
+            fallback()
         end
-      end
-    end,
+    end),
 
-    ['<S-Tab>'] = function(fallback)
-      if not cmp.select_prev_item() then
-        if vim.bo.buftype ~= 'prompt' and has_words_before() then
-          cmp.complete()
-        else
-          fallback()
-        end
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.locally_jumpable(1) then
+        luasnip.jump(1)
+      else
+        fallback()
       end
-    end,
+    end, { "i", "s" }),
+
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.locally_jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
   }),
   view = {
     -- name can be "custom", "wildmenu" or "native"

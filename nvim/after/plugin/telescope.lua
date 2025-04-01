@@ -7,6 +7,8 @@ require('telescope').setup{
       ".bluej",
       ".out",
       ".txt",
+      ".vscode",
+      ".json"
     }
   }
 }
