@@ -23,6 +23,46 @@ alias vi="nvim"
 alias vir="nvim -R"
 eval "$(gh copilot alias -- zsh)"
 
+# FOR NEOVIDE
+# alias vi="neovide --neovim-bin /opt/homebrew/bin/nvim"
+
+# files rename for competitest plugin:
+# [letter]_["input" or "output"][num].txt -> [letter].[num].["in"/"out"]
+move_test_cases() {
+  local dir="$1"
+
+  if [[ ! -d "$dir" ]]; then
+    echo "Directory does not exist: $dir"
+    return 1
+  fi
+
+  setopt null_glob
+
+  for file in "$dir"/*.txt; do
+    local filename="${file:t}"  # Gets just the filename from the path
+
+    if [[ "$filename" =~ '^([a-zA-Z])_(input|output)([0-9]+)\.txt$' ]]; then
+      local letter="${match[1]}"
+      local type="${match[2]}"
+      local num="${match[3]}"
+      local newtype
+
+      if [[ "$type" == "input" ]]; then
+        newtype="in"
+      else
+        newtype="out"
+      fi
+
+      local newname="${letter}.${newtype}.${num}"
+      mv "$file" "$dir/$newname"
+      echo "Moved: $filename → $newname"
+    fi
+  done
+
+  unsetopt null_glob
+}
+
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -83,7 +123,7 @@ ZSH_THEME="bureau"
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="mmddyyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -98,7 +138,7 @@ plugins=(
   # occasionally annoying
   # zsh-autosuggestions # bound '`' key to accept suggestion
   zsh-syntax-highlighting
-  you-should-use
+  # you-should-use
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -108,6 +148,7 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
+# already done in # EXCECUTE #
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
@@ -165,7 +206,11 @@ conda activate box
 eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(zoxide init --cmd cd zsh)"
 export LANG=zh_CN.UTF-8
-echo "\t启动！"
+#echo "\t启动！"
 cd src
 # temporarily disabled
-# nvim
+# vi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
