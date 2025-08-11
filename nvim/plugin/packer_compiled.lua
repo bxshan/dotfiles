@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/Users/box/.cache/nvim/packer_hererocks/2.1.1716656478/share/lua/5.1/?.lua;/Users/box/.cache/nvim/packer_hererocks/2.1.1716656478/share/lua/5.1/?/init.lua;/Users/box/.cache/nvim/packer_hererocks/2.1.1716656478/lib/luarocks/rocks-5.1/?.lua;/Users/box/.cache/nvim/packer_hererocks/2.1.1716656478/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/Users/box/.cache/nvim/packer_hererocks/2.1.1716656478/lib/lua/5.1/?.so"
+local package_path_str = "/Users/box/.cache/nvim/packer_hererocks/2.1.1744318430/share/lua/5.1/?.lua;/Users/box/.cache/nvim/packer_hererocks/2.1.1744318430/share/lua/5.1/?/init.lua;/Users/box/.cache/nvim/packer_hererocks/2.1.1744318430/lib/luarocks/rocks-5.1/?.lua;/Users/box/.cache/nvim/packer_hererocks/2.1.1744318430/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/Users/box/.cache/nvim/packer_hererocks/2.1.1744318430/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -91,23 +91,26 @@ _G.packer_plugins = {
     path = "/Users/box/.local/share/nvim/site/pack/packer/start/alpha-nvim",
     url = "https://github.com/goolord/alpha-nvim"
   },
-  ["barbecue.nvim"] = {
-    config = { "\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rbarbecue\frequire\0" },
-    load_after = {},
-    loaded = true,
-    needs_bufread = false,
-    path = "/Users/box/.local/share/nvim/site/pack/packer/opt/barbecue.nvim",
-    url = "https://github.com/utilyre/barbecue.nvim"
-  },
   ["blackjack.nvim"] = {
     loaded = true,
     path = "/Users/box/.local/share/nvim/site/pack/packer/start/blackjack.nvim",
     url = "https://github.com/alanfortlink/blackjack.nvim"
   },
+  ["bufferline.nvim"] = {
+    loaded = true,
+    path = "/Users/box/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
+    url = "https://github.com/akinsho/bufferline.nvim"
+  },
   ["cellular-automaton.nvim"] = {
     loaded = true,
     path = "/Users/box/.local/share/nvim/site/pack/packer/start/cellular-automaton.nvim",
     url = "https://github.com/eandrju/cellular-automaton.nvim"
+  },
+  ["claude-code.nvim"] = {
+    config = { "\27LJ\2\nä\2\0\0\6\0\16\0\0196\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\0025\3\b\0=\3\t\0025\3\r\0005\4\v\0005\5\n\0=\5\f\4=\4\14\3=\3\15\2B\0\2\1K\0\1\0\fkeymaps\vtoggle\1\0\1\vtoggle\0\rvariants\1\0\1\rvariants\0\1\0\1\fverbose\15<leader>cc\nshell\1\0\3\14pushd_cmd\acd\14separator\6;\rpopd_cmd\ttrue\bgit\1\0\2\17use_git_root\1\19multi_instance\1\vwindow\1\0\4\nshell\0\fkeymaps\0\bgit\0\vwindow\0\1\0\2\16split_ratio\4š³æÌ\t™³æþ\3\rposition\22vertical botright\nsetup\16claude-code\frequire\0" },
+    loaded = true,
+    path = "/Users/box/.local/share/nvim/site/pack/packer/start/claude-code.nvim",
+    url = "https://github.com/greggh/claude-code.nvim"
   },
   ["cmp-cmdline"] = {
     loaded = true,
@@ -136,16 +139,17 @@ _G.packer_plugins = {
     path = "/Users/box/.local/share/nvim/site/pack/packer/start/competitest.nvim",
     url = "https://github.com/xeluxee/competitest.nvim"
   },
-  ["copilot.vim"] = {
-    loaded = true,
-    path = "/Users/box/.local/share/nvim/site/pack/packer/start/copilot.vim",
-    url = "https://github.com/github/copilot.vim"
-  },
   ["cord.nvim"] = {
     config = { "\27LJ\2\n2\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\tcord\frequire\0" },
     loaded = true,
     path = "/Users/box/.local/share/nvim/site/pack/packer/start/cord.nvim",
     url = "https://github.com/vyfor/cord.nvim"
+  },
+  ["cppman.nvim"] = {
+    config = { "\27LJ\2\nS\0\0\5\1\5\0\t-\0\0\0009\0\0\0006\2\1\0009\2\2\0029\2\3\2'\4\4\0B\2\2\0A\0\0\1K\0\1\0\0À\f<cword>\vexpand\afn\bvim\20open_cppman_for\31\0\0\2\1\1\0\4-\0\0\0009\0\0\0B\0\1\1K\0\1\0\0À\ninputš\1\1\0\6\0\v\0\0216\0\0\0'\2\1\0B\0\2\0029\1\2\0B\1\1\0016\1\3\0009\1\4\0019\1\5\1'\3\6\0'\4\a\0003\5\b\0B\1\4\0016\1\3\0009\1\4\0019\1\5\1'\3\6\0'\4\t\0003\5\n\0B\1\4\0012\0\0€K\0\1\0\0\16<leader>cpp\0\15<leader>cm\6n\bset\vkeymap\bvim\nsetup\vcppman\frequire\0" },
+    loaded = true,
+    path = "/Users/box/.local/share/nvim/site/pack/packer/start/cppman.nvim",
+    url = "https://github.com/madskjeldgaard/cppman.nvim"
   },
   ["friendly-snippets"] = {
     loaded = true,
@@ -156,6 +160,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/box/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
+  },
+  ["global-note.nvim"] = {
+    loaded = true,
+    path = "/Users/box/.local/share/nvim/site/pack/packer/start/global-note.nvim",
+    url = "https://github.com/backdround/global-note.nvim"
   },
   ["gruvbox.nvim"] = {
     loaded = true,
@@ -226,11 +235,6 @@ _G.packer_plugins = {
     path = "/Users/box/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
-  ["nvim-navic"] = {
-    loaded = true,
-    path = "/Users/box/.local/share/nvim/site/pack/packer/start/nvim-navic",
-    url = "https://github.com/SmiteshP/nvim-navic"
-  },
   ["nvim-numbertoggle"] = {
     loaded = true,
     path = "/Users/box/.local/share/nvim/site/pack/packer/start/nvim-numbertoggle",
@@ -240,6 +244,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/box/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
+  },
+  ["nvim-ufo"] = {
+    loaded = true,
+    path = "/Users/box/.local/share/nvim/site/pack/packer/start/nvim-ufo",
+    url = "https://github.com/kevinhwang91/nvim-ufo"
   },
   ["nvim-web-devicons"] = {
     loaded = true,
@@ -256,10 +265,15 @@ _G.packer_plugins = {
     path = "/Users/box/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
-  showkeys = {
+  ["promise-async"] = {
     loaded = true,
-    path = "/Users/box/.local/share/nvim/site/pack/packer/start/showkeys",
-    url = "https://github.com/nvzone/showkeys"
+    path = "/Users/box/.local/share/nvim/site/pack/packer/start/promise-async",
+    url = "https://github.com/kevinhwang91/promise-async"
+  },
+  ["screenkey.nvim"] = {
+    loaded = true,
+    path = "/Users/box/.local/share/nvim/site/pack/packer/start/screenkey.nvim",
+    url = "https://github.com/NStefan002/screenkey.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,
@@ -270,43 +284,57 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/box/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
+  },
+  ["vim-illuminate"] = {
+    loaded = true,
+    path = "/Users/box/.local/share/nvim/site/pack/packer/start/vim-illuminate",
+    url = "https://github.com/RRethy/vim-illuminate"
+  },
+  ["which-key.nvim"] = {
+    config = { "\27LJ\2\nE\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\vglobal\1\tshow\14which-key\frequirep\1\0\6\0\a\0\t6\0\0\0009\0\1\0009\0\2\0'\2\3\0'\3\4\0003\4\5\0005\5\6\0B\0\5\1K\0\1\0\1\0\1\tdesc%Buffer Local Keymaps (which-key)\0\14<leader>?\6n\bset\vkeymap\bvim\0" },
+    loaded = true,
+    path = "/Users/box/.local/share/nvim/site/pack/packer/start/which-key.nvim",
+    url = "https://github.com/folke/which-key.nvim"
   }
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: cord.nvim
-time([[Config for cord.nvim]], true)
-try_loadstring("\27LJ\2\n2\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\tcord\frequire\0", "config", "cord.nvim")
-time([[Config for cord.nvim]], false)
--- Config for: competitest.nvim
-time([[Config for competitest.nvim]], true)
-try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\16competitest\frequire\0", "config", "competitest.nvim")
-time([[Config for competitest.nvim]], false)
 -- Config for: alpha-nvim
 time([[Config for alpha-nvim]], true)
 try_loadstring("\27LJ\2\na\0\0\5\0\5\0\n6\0\0\0'\2\1\0B\0\2\0029\0\2\0006\2\0\0'\4\3\0B\2\2\0029\2\4\2B\0\2\1K\0\1\0\vconfig\27alpha.themes.dashboard\nsetup\nalpha\frequire\0", "config", "alpha-nvim")
 time([[Config for alpha-nvim]], false)
--- Config for: neogen
-time([[Config for neogen]], true)
-try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\vneogen\frequire\0", "config", "neogen")
-time([[Config for neogen]], false)
--- Config for: codewindow.nvim
-time([[Config for codewindow.nvim]], true)
-try_loadstring("\27LJ\2\nW\0\0\3\0\4\0\b6\0\0\0'\2\1\0B\0\2\0029\1\2\0B\1\1\0019\1\3\0B\1\1\1K\0\1\0\27apply_default_keybinds\nsetup\15codewindow\frequire\0", "config", "codewindow.nvim")
-time([[Config for codewindow.nvim]], false)
+-- Config for: which-key.nvim
+time([[Config for which-key.nvim]], true)
+try_loadstring("\27LJ\2\nE\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\vglobal\1\tshow\14which-key\frequirep\1\0\6\0\a\0\t6\0\0\0009\0\1\0009\0\2\0'\2\3\0'\3\4\0003\4\5\0005\5\6\0B\0\5\1K\0\1\0\1\0\1\tdesc%Buffer Local Keymaps (which-key)\0\14<leader>?\6n\bset\vkeymap\bvim\0", "config", "which-key.nvim")
+time([[Config for which-key.nvim]], false)
+-- Config for: cord.nvim
+time([[Config for cord.nvim]], true)
+try_loadstring("\27LJ\2\n2\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\tcord\frequire\0", "config", "cord.nvim")
+time([[Config for cord.nvim]], false)
+-- Config for: cppman.nvim
+time([[Config for cppman.nvim]], true)
+try_loadstring("\27LJ\2\nS\0\0\5\1\5\0\t-\0\0\0009\0\0\0006\2\1\0009\2\2\0029\2\3\2'\4\4\0B\2\2\0A\0\0\1K\0\1\0\0À\f<cword>\vexpand\afn\bvim\20open_cppman_for\31\0\0\2\1\1\0\4-\0\0\0009\0\0\0B\0\1\1K\0\1\0\0À\ninputš\1\1\0\6\0\v\0\0216\0\0\0'\2\1\0B\0\2\0029\1\2\0B\1\1\0016\1\3\0009\1\4\0019\1\5\1'\3\6\0'\4\a\0003\5\b\0B\1\4\0016\1\3\0009\1\4\0019\1\5\1'\3\6\0'\4\t\0003\5\n\0B\1\4\0012\0\0€K\0\1\0\0\16<leader>cpp\0\15<leader>cm\6n\bset\vkeymap\bvim\nsetup\vcppman\frequire\0", "config", "cppman.nvim")
+time([[Config for cppman.nvim]], false)
 -- Config for: Comment.nvim
 time([[Config for Comment.nvim]], true)
 try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0", "config", "Comment.nvim")
 time([[Config for Comment.nvim]], false)
--- Load plugins in order defined by `after`
-time([[Sequenced loading]], true)
-vim.cmd [[ packadd nvim-web-devicons ]]
-vim.cmd [[ packadd barbecue.nvim ]]
-
--- Config for: barbecue.nvim
-try_loadstring("\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rbarbecue\frequire\0", "config", "barbecue.nvim")
-
-time([[Sequenced loading]], false)
+-- Config for: codewindow.nvim
+time([[Config for codewindow.nvim]], true)
+try_loadstring("\27LJ\2\nW\0\0\3\0\4\0\b6\0\0\0'\2\1\0B\0\2\0029\1\2\0B\1\1\0019\1\3\0B\1\1\1K\0\1\0\27apply_default_keybinds\nsetup\15codewindow\frequire\0", "config", "codewindow.nvim")
+time([[Config for codewindow.nvim]], false)
+-- Config for: claude-code.nvim
+time([[Config for claude-code.nvim]], true)
+try_loadstring("\27LJ\2\nä\2\0\0\6\0\16\0\0196\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\0025\3\b\0=\3\t\0025\3\r\0005\4\v\0005\5\n\0=\5\f\4=\4\14\3=\3\15\2B\0\2\1K\0\1\0\fkeymaps\vtoggle\1\0\1\vtoggle\0\rvariants\1\0\1\rvariants\0\1\0\1\fverbose\15<leader>cc\nshell\1\0\3\14pushd_cmd\acd\14separator\6;\rpopd_cmd\ttrue\bgit\1\0\2\17use_git_root\1\19multi_instance\1\vwindow\1\0\4\nshell\0\fkeymaps\0\bgit\0\vwindow\0\1\0\2\16split_ratio\4š³æÌ\t™³æþ\3\rposition\22vertical botright\nsetup\16claude-code\frequire\0", "config", "claude-code.nvim")
+time([[Config for claude-code.nvim]], false)
+-- Config for: competitest.nvim
+time([[Config for competitest.nvim]], true)
+try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\16competitest\frequire\0", "config", "competitest.nvim")
+time([[Config for competitest.nvim]], false)
+-- Config for: neogen
+time([[Config for neogen]], true)
+try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\vneogen\frequire\0", "config", "neogen")
+time([[Config for neogen]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads

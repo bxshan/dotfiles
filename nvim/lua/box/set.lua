@@ -31,3 +31,19 @@ vim.g.mapleader = " "
 
 vim.opt.showmode = false
 
+-- folds --
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldcolumn = "0"
+vim.opt.foldtext = ""
+vim.opt.foldlevelstart = 99 
+vim.opt.foldnestmax = 3
+
+
+-- transparent background
+--vim.cmd [[
+--  highlight Normal guibg=none
+--  highlight NonText guibg=none
+--  highlight Normal ctermbg=none
+--  highlight NonText ctermbg=none
+--]]

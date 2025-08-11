@@ -1,0 +1,10 @@
+TRACE [neovide] Neovide version: 0.15.0
+DEBUG [neovide::settings::window_size] Loaded window settings: Maximized { grid_size: Some(Size2 { width: 163, height: 50 }) }
+DEBUG [neovide::bridge::session] Starting neovim with: Command { std: "/usr/bin/nvim" "--embed" "-p", kill_on_drop: false }
+ERROR [neovide::error_handling] Neovide just crashed :(
+This is the error that caused the crash. In case you don't know what to do with this, please feel free to report this on https://github.com/neovide/neovide/issues!
+
+Could not locate or start neovim process
+
+Caused by:
+    No such file or directory (os error 2)

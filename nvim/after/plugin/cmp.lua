@@ -37,9 +37,6 @@ cmp.setup({
       luasnip.lsp_expand(args.body) -- For `luasnip` users.
     end,
   },
-  formatting = {
-    format = lspkind.cmp_format(),
-  },
   window = {
     completion = {
       winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
@@ -82,12 +79,6 @@ cmp.setup({
       name = "nvim_lsp",
     },
   }),
-  snippet = {
-    expand = function(args)
-      -- You need Neovim v0.10 to use vim.snippet
-      vim.snippet.expand(args.body)
-    end,
-  },
   --mapping = cmp.mapping.preset.insert({}),
   mapping = cmp.mapping.preset.insert({
     --['<S-Tab>'] = cmp.mapping.scroll_docs(-4),

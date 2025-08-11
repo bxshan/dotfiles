@@ -323,6 +323,8 @@ dashboard.section.buttons.val = {
     --dashboard.button( "w", "󰖬  > 维基百科研究", ":cd ~/Desktop/Desktop - box mac/src/pioneer_boxuan/<CR> | :Ex<CR>"),
     --dashboard.button( "k", "󱚣  > GridWorld项目", ":cd ~/Desktop/Programming Projects/GridWorldCaseStudy/GridWorldCode/projects/boxBug <CR> | :Ex<CR>"),
     --dashboard.button( "r", "  > 最近修改"   , ":Telescope oldfiles<CR>"),
+    dashboard.button( "a", "󰬷  > AP CS DS" , ":cd /Users/box/Desktop/Desktop - box mac/src/harkerAPCS<CR> | :Ex<CR>"),
+    dashboard.button( "u", "  > USACO" , ":cd /Users/box/Desktop/Desktop - box mac/src/usaco<CR> | :Ex<CR>"),
     dashboard.button( "s", "  > 设置" , ":cd ~/.config/nvim/<CR> | :Ex<CR>"),
     dashboard.button( "q", "󰅚  > 关闭 NVIM", ":qa<CR>"),
 }
