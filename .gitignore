@@ -9,6 +9,10 @@ iterm2/
 neofetch/
 wireshark/
 karabiner/
+cppman/
+git/
+kitty/
+neovide/
 
 # I DONT KNOW WHAT THIS DOES
 nvim/usage_data.json
