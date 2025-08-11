@@ -13,6 +13,7 @@ cppman/
 git/
 kitty/
 neovide/
+unused_nvim/
 
 # I DONT KNOW WHAT THIS DOES
 nvim/usage_data.json
