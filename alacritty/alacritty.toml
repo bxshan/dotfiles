@@ -1,17 +1,18 @@
 [env]
-TERM = "autumn"
+#TERM = "gruvbox_dark"
 
 [window]
 decorations = "buttonless"
 dynamic_padding = true 
-opacity = 0.5 
-blur = true
+#opacity = 0.425
+opacity = 1.0
+blur = false 
 startup_mode = "Windowed" 
 title = "bxshan"
 
-padding = { x = 5, y = 5}
+padding = { x = 3, y = 3 }
 
-dimensions = { columns = 100, lines = 30 } 
+dimensions = { columns = 100, lines = 40 } 
 
 [scrolling]
 history = 100000
