@@ -14,6 +14,7 @@ alias actf="genact --speed-factor 30"
 alias acts="genact --speed-factor 2"
 alias gcc="g++ -w -std=c++11 -O2 -pedantic -Wfloat-equal -o a.out"
 alias zoxidelist="zoxide query -l -s"
+alias renamecases='python ~/Desktop/Desktop\ -\ box\ mac/src/usacotcrename.py'
 # debug
 alias gccsa="gcc -fsanitize=address"
 alias gccsu="gcc -fsanitize=undefined"
