@@ -85,14 +85,10 @@
 vim.opt.signcolumn = 'yes'
 
 -- Setup global default capabilities
-local lspconfig_defaults = require('lspconfig').util.default_config
-lspconfig_defaults.capabilities = vim.tbl_deep_extend(
+local default_capabilities = vim.tbl_deep_extend(
   'force',
-  lspconfig_defaults.capabilities,
-  require('cmp_nvim_lsp').default_capabilities(),
-  {
-    --offsetEncoding = { 'utf-8' }
-  }
+  vim.lsp.protocol.make_client_capabilities(),
+  require('cmp_nvim_lsp').default_capabilities()
 )
 
 
@@ -130,22 +126,34 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
--- Language server setups
+-- Language server setups using new vim.lsp.config API
 
-require('lspconfig').jdtls.setup({
-  on_attach = on_attach,
-})
+vim.lsp.config.jdtls = {
+  cmd = { 'jdtls' },
+  filetypes = { 'java' },
+  root_markers = { '.git', 'pom.xml', 'build.gradle' },
+  capabilities = default_capabilities,
+}
 
-require('lspconfig').pylsp.setup({
-  on_attach = on_attach,
-})
+vim.lsp.config.pylsp = {
+  cmd = { 'pylsp' },
+  filetypes = { 'python' },
+  root_markers = { '.git', 'pyproject.toml', 'setup.py' },
+  capabilities = default_capabilities,
+}
 
-require('lspconfig').clangd.setup({
-  on_attach = on_attach,
+vim.lsp.config.clangd = {
+  cmd = { "clangd", "--compile-commands-dir=." },
+  filetypes = { 'c', 'cpp', 'objc', 'objcpp' },
+  root_markers = { '.git', 'compile_commands.json' },
   capabilities = vim.tbl_deep_extend(
     'force',
-    require('cmp_nvim_lsp').default_capabilities(),
-    { offsetEncoding = { 'utf-8' } }  -- ✅ match Copilot
+    default_capabilities,
+    { offsetEncoding = 'utf-8' }  -- match Copilot
   ),
-  cmd = { "clangd", "--compile-commands-dir=." }
-})
+}
+
+-- Enable the language servers
+vim.lsp.enable('jdtls')
+vim.lsp.enable('pylsp')
+vim.lsp.enable('clangd')

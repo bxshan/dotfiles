@@ -257,6 +257,13 @@ s(
       "  friend mint operator * (mint a, const mint& b) { return a *= b; }",
       "  friend mint operator / (mint a, const mint& b) { return a /= b; }",
       "",
+      "  friend bool operator==(const mint& a, const mint& b) { return a.val == b.val; }",
+      "  friend bool operator!=(const mint& a, const mint& b) { return a.val != b.val; }",
+      "  friend bool operator< (const mint& a, const mint& b) { return a.val <  b.val; }",
+      "  friend bool operator<=(const mint& a, const mint& b) { return a.val <= b.val; }",
+      "  friend bool operator> (const mint& a, const mint& b) { return a.val >  b.val; }",
+      "  friend bool operator>=(const mint& a, const mint& b) { return a.val >= b.val; }",
+      "",
       "  friend ostream& operator<<(ostream& os, const mint& m) { return os << m.val; }",
       "  friend istream& operator>>(istream& is, mint& m) { ll x; is >> x; m = mint(x); return is; }",
       "};",
@@ -265,6 +272,103 @@ s(
     i(1, "1000000007"),
     t(";")
   }
-)
+),
+
+s(
+  "combinatorics",
+  fmt(
+    [[
+mint fact[MAXN+1];
+mint invf[MAXN+1];
+
+void facts() {{
+  fact[0] = 1;
+  FOR(i, 1, MAXN+1) fact[i] = fact[i-1] * i; // mint
+  invf[MAXN] = fact[MAXN].power(mint::MOD - 2);
+  ROF(i, MAXN, 0) invf[i-1] = invf[i] * i;
+}}
+
+mint C(int n, int r) {{
+  if (r < 0 || r > n) return mint(0);
+  return fact[n] * invf[r] * invf[n-r];
+}}
+
+
+]],
+    {}
+  )
+),
+
+s(
+  "segtree",
+  fmt(
+    [[
+template<typename E>
+struct SegmentTree {{
+  int n;
+  vector<E> tree;
+  E d;
+
+  SegmentTree(int size) {{
+    d = E(); // default val
+    n = size;
+    tree.resize(4 * n, d); 
+  }}
+
+  void update(int node, int l, int r, int idx, E val) {{
+    if (l == r) {{
+      tree[node] += val;
+    }} else {{
+      int m = (l + r) / 2;
+      if (idx <= m) {{
+        update(2 * node, l, m, idx, val);
+      }} else {{
+        update(2 * node + 1, m + 1, r, idx, val);
+      }}
+      tree[node] = tree[2 * node] + tree[2 * node + 1];
+    }}
+  }}
+
+  E query(int node, int l, int r, int ql, int qr) {{
+    if (qr < l || r < ql) return d;
+    if (ql <= l && r <= qr) return tree[node];
+    int m = (l + r) / 2;
+    return query(2 * node, l, m, ql, qr) + query(2 * node + 1, m + 1, r, ql, qr);
+  }}
+
+  int kth(int node, int l, int r, int k) {{
+    if (l == r) return l;
+    int lc = tree[2 * node];
+    int m = (l + r) / 2;
+    if (k <= lc) {{
+      return kth(2 * node, l, m, k);
+    }} else {{
+      return kth(2 * node + 1, m + 1, r, k - lc);
+    }}
+  }}
+
+  void u(int idx, E val) {{
+    update(1, 0, n - 1, idx, val); 
+  }}
+
+  E q(int l, int r) {{
+    return query(1, 0, n - 1, l, r);
+  }}
+
+  // debug
+  void show() {{
+    for(auto &i:tree) cout << i << " ";
+    cout << endl;
+  }}
+
+  void showleaves() {{
+    for(int i = 0; i < n; i++) cout << tree[n + i] << " ";
+    cout << endl;
+  }}
+}};
+]],
+    {}
+  )
+),
 
       })

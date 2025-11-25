@@ -3,7 +3,13 @@
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
-return require('packer').startup(function(use)
+-- Check if packer is actually available
+local status, packer = pcall(require, 'packer')
+if not status then
+  return
+end
+
+return packer.startup(function(use)
   -- PACKER --
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
@@ -188,12 +194,10 @@ return require('packer').startup(function(use)
   ---------------------------------------------------
   -- idk what this is for -
   use({'onsails/lspkind.nvim'})
-  use{
-    'hrsh7th/nvim-cmp',
-    "hrsh7th/cmp-cmdline",
-    "saadparwaiz1/cmp_luasnip",
-    "rafamadriz/friendly-snippets",
-  }
+  use 'hrsh7th/nvim-cmp'
+  use "hrsh7th/cmp-cmdline"
+  use "saadparwaiz1/cmp_luasnip"
+  use "rafamadriz/friendly-snippets"
   use({'hrsh7th/cmp-nvim-lsp'})
   use({
     "L3MON4D3/LuaSnip",
@@ -293,5 +297,9 @@ return require('packer').startup(function(use)
       })
     end
   }
+
+
+  -- latex
+  use "lervag/vimtex"
 
 end)
