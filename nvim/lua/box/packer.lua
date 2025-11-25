@@ -298,8 +298,10 @@ return packer.startup(function(use)
     end
   }
 
-
   -- latex
   use "lervag/vimtex"
+
+  -- see whitespace
+  use 'mcauley-penney/visual-whitespace.nvim'
 
 end)

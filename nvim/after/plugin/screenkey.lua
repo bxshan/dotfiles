@@ -45,11 +45,13 @@ require("screenkey").setup({
     },
 })
 
--- Auto-enable screenkey when opening a file
-vim.api.nvim_create_autocmd("BufRead", {
+-- Auto-enable screenkey when Neovim starts
+local screenkey_enabled = false
+vim.api.nvim_create_autocmd("VimEnter", {
     callback = function()
-        if vim.bo.buftype == "" then
-            vim.cmd("Screenkey")  -- Always enable, don't toggle
+        if not screenkey_enabled then
+            vim.cmd("Screenkey")
+            screenkey_enabled = true
         end
     end,
 })
