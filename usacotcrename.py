@@ -65,4 +65,3 @@ if __name__ == "__main__":
     folder = sys.argv[1]
     base = sys.argv[2]
     rename_cases(folder, base)
-
