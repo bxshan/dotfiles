@@ -55,7 +55,16 @@ vim.keymap.set("n", "<leader>lr", "<cmd>CellularAutomaton make_it_rain<CR>")
 vim.keymap.set("n", "<leader>ll", "<cmd>CellularAutomaton game_of_life<CR>")
 
 -- COMPETITEST --
-vim.keymap.set('n', '<leader>rr', ":CompetiTest run<CR>")
+-- vim.keymap.set('n', '<leader>rr', ":CompetiTest run<CR>") // changed to only run on cpp files; conflict with magma notebook
+-- C/C++ specific remap
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "cpp", "c", "cc" },
+  callback = function()
+    vim.keymap.set("n", "<leader>rr", ":CompetiTest run<CR>", {
+      buffer = true, silent = true })
+    end,
+  })
+
 vim.keymap.set('n', '<leader>tt', ":CompetiTest add_testcase<CR>")
 
 -- CORD --
@@ -252,3 +261,39 @@ function ReplaceInVisualSelection()
   vim.cmd(cmd)
 end
 
+-- MOLTEN jupyter notebook remaps
+-- Python/Jupyter specific remaps for Molten
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "python", "jupyter" },
+  callback = function()
+    local opts = { buffer = true, silent = true, noremap = true }
+
+    -- Evaluate line
+    vim.keymap.set("n", "<leader>rr", ":MoltenEvaluateLine<CR>", opts)
+
+    -- Evaluate visual selection
+    vim.keymap.set("v", "<leader>r", ":<C-u>MoltenEvaluateVisual<CR>gv", opts)
+
+    -- Evaluate operator
+    vim.keymap.set("n", "<leader>r", ":MoltenEvaluateOperator<CR>", { buffer = true, silent = true, expr = true })
+
+    -- Re-evaluate current cell
+    vim.keymap.set("n", "<leader>rc", ":MoltenReevaluateCell<CR>", opts)
+
+    -- Delete current cell
+    vim.keymap.set("n", "<leader>rd", ":MoltenDelete<CR>", opts)
+
+    -- Show/hide output
+    vim.keymap.set("n", "<leader>ro", ":MoltenHideOutput<CR>", opts)
+    vim.keymap.set("n", "<leader>rO", ":MoltenShowOutput<CR>", opts)
+
+    -- Initialize Python kernel
+    vim.keymap.set("n", "<leader>ri", ":MoltenInit python3<CR>", opts)
+
+    -- Interrupt kernel
+    vim.keymap.set("n", "<leader>rq", ":MoltenInterrupt<CR>", opts)
+
+    -- Restart kernel
+    vim.keymap.set("n", "<leader>rR", ":MoltenRestart!<CR>", opts)
+  end,
+})

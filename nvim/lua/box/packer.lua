@@ -304,4 +304,7 @@ return packer.startup(function(use)
   -- see whitespace
   use 'mcauley-penney/visual-whitespace.nvim'
 
+  -- jupyter notebook
+  use { 'benlubas/molten-nvim', run = ':UpdateRemotePlugins' }
+
 end)
