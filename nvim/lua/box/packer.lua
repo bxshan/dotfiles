@@ -307,4 +307,9 @@ return packer.startup(function(use)
   -- jupyter notebook
   use { 'benlubas/molten-nvim', run = ':UpdateRemotePlugins' }
 
+  use({
+    "iamcco/markdown-preview.nvim",
+    run = function() vim.fn["mkdp#util#install"]() end,
+  })
+
 end)
