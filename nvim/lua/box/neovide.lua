@@ -29,8 +29,8 @@ if vim.g.neovide then
   vim.opt.linespace = -7 -- any ints work, even negative; zero should be fine
 
   -- font scale
-  -- vim.g.neovide_scale_factor = 1.4 -- float val 
-  vim.g.neovide_scale_factor = 1.2 -- float val 
+  vim.g.neovide_scale_factor = 1.5 -- float val 
+  -- vim.g.neovide_scale_factor = 1.2 -- float val 
 
   -- text gamma and contrast
   vim.g.neovide_text_gamma = 0.0
