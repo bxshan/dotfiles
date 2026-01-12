@@ -16,3 +16,5 @@ require("codewindow").setup({
   relative = 'win',  -- What will be the minimap be placed relative to, "win": the current window, "editor": the entire editor
   events = { 'InsertLeave', 'DiagnosticChanged', 'FileWritePost' }  -- Events that update the code window (removed TextChanged for performance)
 })
+
+vim.keymap.set('n', '<leader>mm', function() require('codewindow').toggle_minimap() end, { noremap = true, silent = true })

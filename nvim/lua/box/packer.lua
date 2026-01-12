@@ -82,7 +82,7 @@ return packer.startup(function(use)
 
   -- NVIM-NUMBERTOGGLE --
   -- toggles relative and absolute line numbers in insert and command mode 
-  use { "sitiom/nvim-numbertoggle" }
+  use { "sitiom/nvim-numbertoggle" } 
 
   -- NETRW --
   -- custom netrw layout
@@ -103,7 +103,7 @@ return packer.startup(function(use)
 
   -- NOICE [UNUSED] -- 
   -- noice.lua missing --
-  --[[
+  --[[ 
   use {
     'folke/noice.nvim',
     requires = { 
@@ -149,7 +149,7 @@ return packer.startup(function(use)
   -- discord integration
   use {
     'vyfor/cord.nvim',
-    run = './build || .\\build',
+    run = './build || .\build',
     config = function()
       require('cord').setup()
     end,
@@ -305,7 +305,7 @@ return packer.startup(function(use)
   use 'mcauley-penney/visual-whitespace.nvim'
 
   -- jupyter notebook
-  use { 'benlubas/molten-nvim', run = ':UpdateRemotePlugins' }
+  use { 'benlubas/molten-nvim', run = ':UpdateRemotePlugins' } 
 
   use({
     "iamcco/markdown-preview.nvim",
