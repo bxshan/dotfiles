@@ -6,6 +6,16 @@ vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 
+vim.api.nvim_create_autocmd("FileType", { -- literally 1984
+  pattern = "java",
+  callback = function()
+    vim.opt_local.tabstop = 4      -- Tab character visual width
+    vim.opt_local.softtabstop = 4  -- Spaces inserted when hitting Tab
+    vim.opt_local.shiftwidth = 4   -- Spaces for auto-indenting (needed for Checkstyle)
+    vim.opt_local.expandtab = true -- Turn tabs into spaces
+  end,
+})
+
 vim.opt.smartindent = true
 
 vim.opt.wrap = false
