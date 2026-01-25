@@ -305,8 +305,9 @@ return packer.startup(function(use)
   use 'mcauley-penney/visual-whitespace.nvim'
 
   -- jupyter notebook
-  use { 'benlubas/molten-nvim', run = ':UpdateRemotePlugins' } 
+  use { 'benlubas/molten-nvim', run = ':UpdateRemotePlugins' }
 
+  -- markdown preview
   use({
     "iamcco/markdown-preview.nvim",
     run = function() vim.fn["mkdp#util#install"]() end,
