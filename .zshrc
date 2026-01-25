@@ -18,6 +18,8 @@ alias renamecases="python ~/.config/usacotcrename.py"
 # debug
 alias gccsa="gcc -fsanitize=address"
 alias gccsu="gcc -fsanitize=undefined"
+# java checkstyle
+alias checkstyle="java -jar ~/bin/checkstyle-13.0.0-all.jar"
 
 # IF USING NVIM OR VIM
 alias vi="nvim"
