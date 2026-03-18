@@ -297,3 +297,10 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.keymap.set("n", "<leader>rR", ":MoltenRestart!<CR>", opts)
   end,
 })
+
+-- call :Hypersonic: explain regex TODO not working yet
+vim.keymap.set("v", "<leader>rg", ":Hypersonic<CR>")
+
+-- HARDTIME TOGGLE --
+vim.keymap.set("n", "<leader>hd", "<cmd>Hardtime toggle<CR>", { desc = "Toggle Hardtime" })
+

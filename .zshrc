@@ -201,7 +201,7 @@ export CLASSPATH
 # # # # # #
 
 # bindkey begin
-bindkey '`' autosuggest-accept # `
+# bindkey '`' autosuggest-accept # `
 # bindkey end
 
 neofetch --memory_percent on --memory_unit gib --refresh_rat    e on --colors 2 7 4 3 7 7 --block_range 0 7 --block_width 5 --block_height 1

@@ -313,4 +313,24 @@ return packer.startup(function(use)
     run = function() vim.fn["mkdp#util#install"]() end,
   })
 
+  -- regex explain
+  use 'tomiis4/Hypersonic.nvim'
+
+  -- hardtime fix bad vim habits
+  -- use({
+  --   "m4xshen/hardtime.nvim",
+  --   lazy = false,
+  --   dependencies = { "MunifTanjim/nui.nvim" },
+  --   opts = {},
+  --   require("hardtime").setup()
+  -- })
+
+  -- use({
+  --   "mfussenegger/nvim-lint",
+  --   event = { "BufReadPost", "BufNewFile" },
+  --   config = function()
+  --     require("lint").setup({})
+  --   end,
+  -- })
+
 end)

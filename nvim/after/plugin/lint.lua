@@ -1,0 +1,22 @@
+-- local lint = require('lint')
+--
+-- -- 1. Assign checkstyle to java files
+-- lint.linters_by_ft = {
+--   java = {'checkstyle'}
+-- }
+--
+-- -- 2. Configure the path to your checkstyle.xml
+-- -- Checkstyle REQUIRES a config file to function
+-- lint.linters.checkstyle.args = {
+--   '-f', 'sarif',
+--   '-c', '/path/to/your/checkstyle.xml', -- Path to your rules
+--   '$FILENAME'
+-- }
+--
+-- -- 3. Trigger linting on save
+-- vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+--   callback = function()
+--     lint.try_lint()
+--   end,
+-- })
+--
