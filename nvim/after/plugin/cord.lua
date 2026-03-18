@@ -1,21 +1,24 @@
-require('cord').setup {
+require('cord').setup 
+{
   enabled = true,
   log_level = vim.log.levels.OFF,
   editor = {
     client = 'neovim',
-    tooltip = 'better than vscode',
+    tooltip = '倪哦丽母',
     icon = nil,
   },
   display = {
     theme = 'atom',
     flavor = 'light',
-    swap_fields = false,
-    swap_icons = true,
+    view = 'full',
+    swap_fields = true,
+    swap_icons = false,
   },
   timestamp = {
     enabled = true,
     reset_on_idle = false,
     reset_on_change = false,
+    shared = false,
   },
   idle = {
     enabled = true,
@@ -24,45 +27,35 @@ require('cord').setup {
     ignore_focus = true,
     unidle_on_focus = true,
     smart_idle = true,
-    details = 'Being Distracted',
+    details = '空闲',
     state = nil,
-    tooltip = 'Idle',
+    tooltip = '💤',
     icon = nil,
   },
   text = {
-    workspace = function(opts) return 'In ' .. opts.workspace end,
-    viewing = function(opts) return 'Viewing ' .. opts.filename end,
-    --editing = function(opts) return 'Editing ' .. opts.filename end,
-    editing = function(opts) 
-      return string.format('Editing %s at %s:%s', opts.filename, opts.cursor_line, opts.cursor_char) 
-    end,
+    default = nil,
+    workspace = function(opts) return '在 ' .. opts.workspace .. ' 中' end,
+    viewing = function(opts) return '查看 ' .. opts.filename end,
+    editing = function(opts) return '编辑 ' .. opts.filename end,
     file_browser = function(opts) return 'Browsing files in ' .. opts.name end,
     plugin_manager = function(opts) return 'Managing plugins in ' .. opts.name end,
     lsp = function(opts) return 'Configuring LSP in ' .. opts.name end,
-    docs = function(opts) return 'Reading ' .. opts.name end,
+    docs = function(opts) return '读取 ' .. opts.name end,
     vcs = function(opts) return 'Committing changes in ' .. opts.name end,
     notes = function(opts) return 'Taking notes in ' .. opts.name end,
     debug = function(opts) return 'Debugging in ' .. opts.name end,
     test = function(opts) return 'Testing in ' .. opts.name end,
     diagnostics = function(opts) return 'Fixing problems in ' .. opts.name end,
     games = function(opts) return 'Playing ' .. opts.name end,
-    terminal = function(opts) return 'Running commands in ' .. opts.name end,
-    dashboard = 'Home',
+    terminal = function(opts) return '执行命令于 ' .. opts.name end,
+    dashboard = '主目录',
   }, 
-  --buttons = nil,
+  -- buttons = nil,
   buttons = {
-    --{
-    --  label = 'View Repository',
-    --  url = function(opts) return opts.repo_url end,
-    --},
-    --{
-    --  label = function(opts)
-    --    return 'Website'
-    --  end,
-    --  url = function(opts)
-    --    return 'github.com'
-    --  end
-    --}
+    {
+      label = 'View Repository',
+      url = function(opts) return opts.repo_url end,
+    },
   },
   assets = nil,
   variables = nil,
@@ -70,29 +63,22 @@ require('cord').setup {
     ready = nil,
     shutdown = nil,
     pre_activity = nil,
-    --pre_activity = function(opts, activity)
-    --  local date = os.date('*t')
-    --  date.hour, date.min, date.sec = 0, 0, 0
-    --  activity.timestamps.start = os.time(date)
-    --end,
     post_activity = nil,
     idle_enter = nil,
-    -- optionally, you can do one of the two:
-    -- A. also set local time for idle status, or
-    --idle_enter = function(opts, activity)
-    --  local date = os.date('*t')
-    --  date.hour, date.min, date.sec = 0, 0, 0
-    --  activity.timestamps.start = os.time(date)
-    --end,
     idle_leave = nil,
     workspace_change = nil,
+    buf_enter = nil,
   },
-  plugins = nil,
+  extensions = nil,
   advanced = {
     plugin = {
       autocmds = true,
       cursor_update = 'on_hold',
       match_in_mappings = true,
+      debounce = {
+        delay = 50,
+        interval = 750,
+      },
     },
     server = {
       update = 'fetch',
@@ -101,11 +87,27 @@ require('cord').setup {
       timeout = 300000,
     },
     discord = {
+      pipe_paths = nil,
       reconnect = {
-        enabled = true,
+        enabled = false,
         interval = 5000,
         initial = true,
       },
+      sync = {
+        enabled = true,
+        mode = 'periodic',
+        interval = 12000,
+        reset_on_update = true,
+        pad = true,
+      },
+    },
+    workspace = {
+      root_markers = {
+        '.git',
+        '.hg',
+        '.svn',
+      },
+      limit_to_cwd = false,
     },
   },
 }
