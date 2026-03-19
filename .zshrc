@@ -208,11 +208,12 @@ neofetch --memory_percent on --memory_unit gib --refresh_rat    e on --colors 2 
 conda activate box
 eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(zoxide init --cmd cd zsh)"
-export LANG=zh_CN.UTF-8
+# export LANG=zh_CN.UTF-8
 #echo "\t启动！"
-cd src
-# temporarily disabled
-# vi
+# cd src
+# \ temporarily disabled
+tmux 
+vi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
