@@ -27,6 +27,9 @@ NVIM_APPNAME=bxshan/dotfiles/nvim nvim
 
 + [SmiteshP/nvim-navic](https://dotfyle.com/plugins/SmiteshP/nvim-navic)
 + [utilyre/barbecue.nvim](https://dotfyle.com/plugins/utilyre/barbecue.nvim)
+### code-runner
+
++ [benlubas/molten-nvim](https://dotfyle.com/plugins/benlubas/molten-nvim)
 ### colorscheme
 
 + [ellisonleao/gruvbox.nvim](https://dotfyle.com/plugins/ellisonleao/gruvbox.nvim)
@@ -74,9 +77,13 @@ NVIM_APPNAME=bxshan/dotfiles/nvim nvim
 + [linrongbin16/lsp-progress.nvim](https://dotfyle.com/plugins/linrongbin16/lsp-progress.nvim)
 + [neovim/nvim-lspconfig](https://dotfyle.com/plugins/neovim/nvim-lspconfig)
 + [onsails/lspkind.nvim](https://dotfyle.com/plugins/onsails/lspkind.nvim)
++ [mfussenegger/nvim-lint](https://dotfyle.com/plugins/mfussenegger/nvim-lint)
 ### lsp-installer
 
 + [williamboman/mason.nvim](https://dotfyle.com/plugins/williamboman/mason.nvim)
+### markdown-and-latex
+
++ [iamcco/markdown-preview.nvim](https://dotfyle.com/plugins/iamcco/markdown-preview.nvim)
 ### media
 
 + [vyfor/cord.nvim](https://dotfyle.com/plugins/vyfor/cord.nvim)
@@ -119,6 +126,9 @@ NVIM_APPNAME=bxshan/dotfiles/nvim nvim
 + [folke/noice.nvim](https://dotfyle.com/plugins/folke/noice.nvim)
 + [kevinhwang91/nvim-ufo](https://dotfyle.com/plugins/kevinhwang91/nvim-ufo)
 + [rcarriga/nvim-notify](https://dotfyle.com/plugins/rcarriga/nvim-notify)
+### workflow
+
++ [m4xshen/hardtime.nvim](https://dotfyle.com/plugins/m4xshen/hardtime.nvim)
 ## Language Servers
 
 + clangd
