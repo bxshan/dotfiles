@@ -4,7 +4,7 @@ require('cord').setup
   log_level = vim.log.levels.OFF,
   editor = {
     client = 'neovim',
-    tooltip = '倪哦丽母',
+    tooltip = 'bxshan',
     icon = nil,
   },
   display = {
