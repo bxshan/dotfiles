@@ -212,7 +212,6 @@ eval "$(zoxide init --cmd cd zsh)"
 #echo "\t启动！"
 # cd src
 # \ temporarily disabled
-tmux 
 vi
 
 export NVM_DIR="$HOME/.nvm"
