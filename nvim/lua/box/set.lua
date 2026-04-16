@@ -6,6 +6,17 @@ vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+  pattern = {"*.asm", "*.s"},
+  callback = function()
+    vim.bo.filetype = "mips"
+    vim.keymap.set("n", "<leader><leader>", function()
+      local output = vim.fn.system("java -jar /Users/box/Desktop/src/mars.jar nc sm " .. vim.fn.expand("%"))
+      print(output)
+    end, { buffer = true, desc = "Run MIPS file with MARS" })
+  end,
+})
+
 vim.api.nvim_create_autocmd("FileType", { -- literally 1984
   pattern = "java",
   callback = function()

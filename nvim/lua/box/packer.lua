@@ -123,7 +123,6 @@ return packer.startup(function(use)
 
   -- GITHUB COPILOT --
   -- use 'github/copilot.vim'
-  -- TODO
 
   -- HIGHLIGHT UNDO --
   -- shows what undo and redo changed
@@ -305,7 +304,7 @@ return packer.startup(function(use)
   use 'mcauley-penney/visual-whitespace.nvim'
 
   -- jupyter notebook
-  use { 'benlubas/molten-nvim', run = ':UpdateRemotePlugins' }
+  -- use { 'benlubas/molten-nvim', run = ':UpdateRemotePlugins' }
 
   -- markdown preview
   use({
@@ -332,5 +331,18 @@ return packer.startup(function(use)
   --     require("lint").setup({})
   --   end,
   -- })
+
+  -- VIM-MIPS --
+  -- MIPS assembly syntax highlighting
+  use 'benknoble/vim-mips'
+
+  use {
+    "mvllow/modes.nvim",
+    tag = "v0.2.1",
+    config = function()
+      require("modes").setup()
+    end
+  }
+
 
 end)

@@ -20,6 +20,8 @@ alias gccsa="gcc -fsanitize=address"
 alias gccsu="gcc -fsanitize=undefined"
 # java checkstyle
 alias checkstyle="java -jar ~/bin/checkstyle-13.0.0-all.jar"
+# mars for mips asm
+alias mars="java -jar /Users/box/Desktop/src/mars.jar nc"
 
 # IF USING NVIM OR VIM
 alias vi="nvim"
@@ -217,3 +219,13 @@ vi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# bun completions
+[ -s "/Users/box/.bun/_bun" ] && source "/Users/box/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+alias claude-mem='/Users/box/.bun/bin/bun "/Users/box/.claude/plugins/cache/thedotmack/claude-mem/12.1.0/scripts/worker-service.cjs"'
+export CLAUDE_CODE_MAX_OUTPUT_TOKENS=100000
