@@ -1,3 +1,6 @@
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+
 require("box.lazy")
 require("box.keymaps")
 require("box.autocmds")

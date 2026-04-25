@@ -25,8 +25,6 @@ vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
 
---vim.opt.colorcolumn = "80"
-
 vim.opt.showmode = false
 
 -- folds --
@@ -36,12 +34,3 @@ vim.opt.foldcolumn = "0"
 vim.opt.foldtext = ""
 vim.opt.foldlevelstart = 99
 vim.opt.foldnestmax = 3
-
-
--- transparent background
---vim.cmd [[
---  highlight Normal guibg=none
---  highlight NonText guibg=none
---  highlight Normal ctermbg=none
---  highlight NonText ctermbg=none
---]]
