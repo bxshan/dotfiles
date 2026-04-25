@@ -26,6 +26,7 @@ alias mars="java -jar /Users/box/Desktop/src/mars.jar nc"
 # IF USING NVIM OR VIM
 alias vi="nvim"
 alias vir="nvim -R"
+alias i="nvim"
 eval "$(gh copilot alias -- zsh)"
 
 # FOR NEOVIDE
@@ -189,6 +190,7 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+export PATH="/Users/box/miniconda3/envs/box/bin:$PATH"
 
 # JAVA INIT #
 JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-22.jdk/Contents/Home"
@@ -207,8 +209,8 @@ export CLASSPATH
 # bindkey end
 
 neofetch --memory_percent on --memory_unit gib --refresh_rat    e on --colors 2 7 4 3 7 7 --block_range 0 7 --block_width 5 --block_height 1
-conda activate box
 eval "$(/opt/homebrew/bin/brew shellenv)"
+conda activate box
 eval "$(zoxide init --cmd cd zsh)"
 # export LANG=zh_CN.UTF-8
 #echo "\t启动！"
@@ -229,3 +231,6 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 alias claude-mem='/Users/box/.bun/bin/bun "/Users/box/.claude/plugins/cache/thedotmack/claude-mem/12.1.0/scripts/worker-service.cjs"'
 export CLAUDE_CODE_MAX_OUTPUT_TOKENS=100000
+
+# Force conda box env python
+export PATH="/Users/box/miniconda3/envs/box/bin:$PATH"
