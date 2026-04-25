@@ -330,7 +330,7 @@ dashboard.section.buttons.val = {
 
 local currtime = os.date("%H时%M分")
 local currdate = os.date("%m月%d日%Y年")
-local total_plugins = #vim.tbl_keys(packer_plugins)
+local total_plugins = require("lazy").stats().count
 local version = vim.version()
 local nvim_version_info = version.major .. "." .. version.minor .. "." .. version.patch
 

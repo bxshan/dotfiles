@@ -101,14 +101,6 @@ bufferline.setup {
         close_icon = ' ',
         left_trunc_marker = ' ',
         right_trunc_marker = ' ',
-        name_formatter = function(buf)  -- buf contains:
-          --return vim.fn.fnamemodify(buf.name, ":t:r")
-            -- name | str        | the basename of the active file
-            -- path | str        | the full path of the active file
-            -- bufnr | int       | the number of the active buffer
-            -- buffers | table   | the numbers of the buffers in the tab
-            -- tabnr | int       | the "handle" of the tab
-        end,
         max_name_length = 18,
         max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
         truncate_names = true, -- whether or not tab names should be truncated
@@ -169,7 +161,7 @@ bufferline.setup {
             local result = {}
             local seve = vim.diagnostic.severity
             -- Cache diagnostics for performance
-            local current_time = vim.loop.hrtime()
+            local current_time = vim.uv.hrtime()
             if current_time - diagnostic_cache.last_update > 500000000 then
               diagnostic_cache.data = {
                 error = #vim.diagnostic.get(0, { severity = seve.ERROR }),

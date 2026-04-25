@@ -5,7 +5,7 @@ end
 local function return_text_1()
   return [[单博宣]]
 end
-return_text = return_text_1
+local return_text = return_text_1
 
 require('lualine').setup {
   options = {

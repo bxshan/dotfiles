@@ -1,6 +1,15 @@
 -- Reserve a space in the gutter to avoid layout shift
 vim.opt.signcolumn = 'yes'
 
+-- Set initial diagnostic config
+vim.diagnostic.config({
+  virtual_text = true,
+  signs = true,
+  update_in_insert = false,
+  underline = true,
+  severity_sort = true,
+})
+
 -- Setup global default capabilities
 local default_capabilities = vim.tbl_deep_extend(
   'force',
@@ -70,7 +79,27 @@ vim.lsp.config.clangd = {
   ),
 }
 
+vim.lsp.config.lua_ls = {
+  cmd = { 'lua-language-server' },
+  filetypes = { 'lua' },
+  root_markers = { '.git', '.luarc.json', '.luarc.jsonc' },
+  capabilities = default_capabilities,
+  settings = {
+    Lua = {
+      runtime = { version = 'LuaJIT' },
+      diagnostics = {
+        globals = { 'vim' },
+      },
+      workspace = {
+        library = vim.api.nvim_get_runtime_file("", true),
+        checkThirdParty = false,
+      },
+    },
+  },
+}
+
 -- Enable the language servers
 vim.lsp.enable('jdtls')
 vim.lsp.enable('pylsp')
 vim.lsp.enable('clangd')
+vim.lsp.enable('lua_ls')
