@@ -23,20 +23,18 @@ NVIM_APPNAME=bxshan/dotfiles/nvim nvim
 
 ## Plugins
 
-### bars-and-lines
+### animation
 
-+ [SmiteshP/nvim-navic](https://dotfyle.com/plugins/SmiteshP/nvim-navic)
-+ [utilyre/barbecue.nvim](https://dotfyle.com/plugins/utilyre/barbecue.nvim)
-### code-runner
++ [sphamba/smear-cursor.nvim](https://dotfyle.com/plugins/sphamba/smear-cursor.nvim)
+### color
 
-+ [benlubas/molten-nvim](https://dotfyle.com/plugins/benlubas/molten-nvim)
++ [mvllow/modes.nvim](https://dotfyle.com/plugins/mvllow/modes.nvim)
 ### colorscheme
 
 + [ellisonleao/gruvbox.nvim](https://dotfyle.com/plugins/ellisonleao/gruvbox.nvim)
 ### comment
 
 + [numToStr/Comment.nvim](https://dotfyle.com/plugins/numToStr/Comment.nvim)
-+ [danymat/neogen](https://dotfyle.com/plugins/danymat/neogen)
 ### competitive-programming
 
 + [xeluxee/competitest.nvim](https://dotfyle.com/plugins/xeluxee/competitest.nvim)
@@ -74,10 +72,8 @@ NVIM_APPNAME=bxshan/dotfiles/nvim nvim
 + [folke/which-key.nvim](https://dotfyle.com/plugins/folke/which-key.nvim)
 ### lsp
 
-+ [linrongbin16/lsp-progress.nvim](https://dotfyle.com/plugins/linrongbin16/lsp-progress.nvim)
 + [neovim/nvim-lspconfig](https://dotfyle.com/plugins/neovim/nvim-lspconfig)
 + [onsails/lspkind.nvim](https://dotfyle.com/plugins/onsails/lspkind.nvim)
-+ [mfussenegger/nvim-lint](https://dotfyle.com/plugins/mfussenegger/nvim-lint)
 ### lsp-installer
 
 + [williamboman/mason.nvim](https://dotfyle.com/plugins/williamboman/mason.nvim)
@@ -96,10 +92,7 @@ NVIM_APPNAME=bxshan/dotfiles/nvim nvim
 + [MunifTanjim/nui.nvim](https://dotfyle.com/plugins/MunifTanjim/nui.nvim)
 ### plugin-manager
 
-+ [wbthomason/packer.nvim](https://dotfyle.com/plugins/wbthomason/packer.nvim)
-### scrollbar
-
-+ [gorbit99/codewindow.nvim](https://dotfyle.com/plugins/gorbit99/codewindow.nvim)
++ [folke/lazy.nvim](https://dotfyle.com/plugins/folke/lazy.nvim)
 ### snippet
 
 + [L3MON4D3/LuaSnip](https://dotfyle.com/plugins/L3MON4D3/LuaSnip)
@@ -116,23 +109,16 @@ NVIM_APPNAME=bxshan/dotfiles/nvim nvim
 ### tabline
 
 + [akinsho/bufferline.nvim](https://dotfyle.com/plugins/akinsho/bufferline.nvim)
-+ [romgrk/barbar.nvim](https://dotfyle.com/plugins/romgrk/barbar.nvim)
 ### utility
 
 + [NStefan002/screenkey.nvim](https://dotfyle.com/plugins/NStefan002/screenkey.nvim)
-+ [chrisgrieser/nvim-origami](https://dotfyle.com/plugins/chrisgrieser/nvim-origami)
 + [mcauley-penney/visual-whitespace.nvim](https://dotfyle.com/plugins/mcauley-penney/visual-whitespace.nvim)
 + [sitiom/nvim-numbertoggle](https://dotfyle.com/plugins/sitiom/nvim-numbertoggle)
-+ [folke/noice.nvim](https://dotfyle.com/plugins/folke/noice.nvim)
-+ [kevinhwang91/nvim-ufo](https://dotfyle.com/plugins/kevinhwang91/nvim-ufo)
-+ [rcarriga/nvim-notify](https://dotfyle.com/plugins/rcarriga/nvim-notify)
-### workflow
-
-+ [m4xshen/hardtime.nvim](https://dotfyle.com/plugins/m4xshen/hardtime.nvim)
 ## Language Servers
 
 + clangd
 + jdtls
++ lua_ls
 + pylsp
 
 
