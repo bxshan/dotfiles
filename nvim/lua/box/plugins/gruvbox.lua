@@ -25,31 +25,10 @@ return {
         palette_overrides = {},
         overrides = {},
         dim_inactive = false,
-        transparent_mode = true,
+        transparent_mode = false,
       })
 
-      vim.o.background = 'dark' -- or 'light' for light mode
-      vim.cmd([[colorscheme gruvbox]])
-
-      -- Manual overrides for extra transparency (covers things like floating windows, sidebars, etc.)
-      local function make_transparent()
-        local groups = {
-          "Normal", "NormalFloat", "NormalNC", "SignColumn", "EndOfBuffer",
-          "MsgArea", "Pmenu", "TelescopeNormal", "TelescopeBorder",
-          "TelescopePromptBorder", "Folded", "NonText"
-        }
-        for _, group in ipairs(groups) do
-          vim.api.nvim_set_hl(0, group, { bg = "none" })
-        end
-      end
-
-      make_transparent()
-
-      -- Ensure transparency persists when the colorscheme is reloaded
-      vim.api.nvim_create_autocmd("ColorScheme", {
-        pattern = "*",
-        callback = make_transparent,
-      })
+      vim.o.background = 'dark'
     end
   }
 }

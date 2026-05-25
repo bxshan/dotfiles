@@ -7,6 +7,7 @@ return {
     },
     config = function()
       local alpha = require("alpha")
+      local milli = require("milli")
 
       -- ── Default theme ────────────────────────────────────────────────────
       local function setup_default(db)
@@ -245,6 +246,28 @@ return {
 
       end
 
+      local function setup_milli_splash(db, splash_name)
+        vim.api.nvim_set_hl(0, "gborange", { fg = "#fe8019" })
+
+        local data = milli.load({ splash = splash_name })
+        db.section.header.type = "group"
+        db.section.header.val = vim.tbl_map(function(line)
+          return {
+            type = "text",
+            val = line,
+            opts = { hl = "gborange", shrink_margin = false, position = "center" },
+          }
+        end, data.frames[1] or {})
+      end
+
+      local function start_milli_splash(splash_name)
+        vim.schedule(function()
+          local buf = vim.api.nvim_get_current_buf()
+          if vim.bo[buf].filetype == "alpha" then
+            milli.play(buf, { splash = splash_name, loop = true })
+          end
+        end)
+      end
 
       -- ── Shared: applied to every theme ───────────────────────────────────
       local function apply_common(db)
@@ -291,13 +314,51 @@ return {
           vim.api.nvim_win_set_buf(0, tmp)
         end
         alpha.start(false, alpha.default_config)
+
+        local splash_set = {}
+        for _, s in ipairs(milli.list()) do splash_set[s] = true end
+
+        local fn = themes[name]
+        if fn then
+          fn(db)
+        else
+          if not splash_set[name] then
+            vim.notify("Unknown Alpha theme/splash: " .. name, vim.log.levels.ERROR)
+            return
+          end
+          setup_milli_splash(db, name)
+        end
+
+        apply_common(db)
+        pcall(alpha.setup, db.opts)
+        if vim.bo.ft == "alpha" then
+          local tmp = vim.api.nvim_create_buf(false, true)
+          vim.api.nvim_win_set_buf(0, tmp)
+        end
+        alpha.start(false, alpha.default_config)
+
+        if splash_set[name] then
+          start_milli_splash(name)
+        end
+
+        if name == "shader" then
+          vim.schedule(function()
+            local buf = vim.api.nvim_get_current_buf()
+            if vim.bo[buf].filetype == "alpha" then
+              milli.play(buf, { splash = "shader", loop = true })
+            end
+          end)
+        end
       end
 
-      -- Initial load
-      local dashboard = require("alpha.themes.dashboard")
-      setup_default(dashboard)
-      apply_common(dashboard)
-      alpha.setup(dashboard.opts)
+      -- Initial load (only for an empty startup, not `nvim <file>`)
+      -- local dashboard = require("alpha.themes.dashboard")
+      -- setup_default(dashboard)
+      -- apply_common(dashboard)
+      -- alpha.setup(dashboard.opts)
+      if vim.fn.argc() == 0 then
+        load_theme("cao")
+      end
 
       -- Disable folding on alpha buffer
       vim.cmd([[
@@ -306,11 +367,13 @@ return {
 
       -- :AlphaTheme <name>  (tab-completes registered theme names)
       vim.api.nvim_create_user_command("AlphaTheme", function(args)
-        load_theme(args.args)
+        load_theme(vim.trim(args.args))
       end, {
-        nargs = 1,
-        complete = function() return vim.tbl_keys(themes) end,
-      })
+      nargs = 1,
+      complete = function()
+        return vim.list_extend(vim.tbl_keys(themes), milli.list())
+      end,
+    })
 
     end
   }

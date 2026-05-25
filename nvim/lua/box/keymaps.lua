@@ -114,5 +114,13 @@ end
 -- Remap to search and replace within visual selection
 vim.keymap.set('v', '<leader>r', ReplaceInVisualSelection, { noremap = true, silent = true })
 
+-- TOGGLE COLORSCHEME --
+local _themes = { 'gruvbox', 'monochrome' }
+local _theme_idx = 1
+vim.keymap.set('n', '<leader>cs', function()
+  _theme_idx = (_theme_idx % #_themes) + 1
+  vim.cmd.colorscheme(_themes[_theme_idx])
+end, { desc = 'Toggle colorscheme' })
+
 -- call :Hypersonic: explain regex
 vim.keymap.set("v", "<leader>rg", ":Hypersonic<CR>")

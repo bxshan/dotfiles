@@ -30,7 +30,12 @@ vim.opt.showmode = false
 -- folds --
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldenable = true
 vim.opt.foldcolumn = "0"
 vim.opt.foldtext = ""
 vim.opt.foldlevelstart = 99
+vim.opt.foldlevel = 99
 vim.opt.foldnestmax = 3
+
+-- default colorscheme
+vim.cmd.colorscheme('gruvbox')
