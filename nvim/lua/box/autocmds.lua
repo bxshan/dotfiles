@@ -29,7 +29,7 @@ vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
   callback = function()
     vim.bo.filetype = "mips"
     vim.keymap.set("n", "<leader><leader>", function()
-      local output = vim.fn.system("java -jar " .. vim.fn.expand("~/Desktop/src/mars.jar") .. " nc sm " .. vim.fn.expand("%"))
+      local output = vim.fn.system("java -jar " .. vim.fn.expand("~/bin/mars.jar") .. " nc sm " .. vim.fn.expand("%"))
       print(output)
     end, { buffer = true, desc = "Run MIPS file with MARS" })
   end,

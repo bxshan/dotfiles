@@ -124,7 +124,7 @@ return {
           position = "center",
         })
 
-        local image_path = "/Users/box/.config/nvim/lua/box/plugins/assets/adam-and-machine.png"
+        local image_path = vim.fn.stdpath("config") .. "/lua/box/plugins/assets/adam-and-machine.png"
         local raw = vim.fn.system("ascii-image-converter " .. vim.fn.shellescape(image_path) .. " -b --width 180")
         local lines = vim.split(raw:gsub("\27%[[%d;]*m", ""), "\n", { plain = true })
 
@@ -278,7 +278,7 @@ return {
         })
 
         db.section.buttons.val = {
-          db.button("c", "󰬷  > Comp-Intp", ":cd /Users/box/Desktop/src/HarkerCompIntp<CR> | :Ex<CR>"),
+          db.button("c", "󰬷  > Comp-Intp", ":cd ~/Desktop/src/HarkerCompIntp<CR> | :Ex<CR>"),
           db.button("s", "󰘬  > 设置",      ":cd ~/.config/nvim/<CR> | :Ex<CR>"),
           db.button("q", "󰅚  > 关闭 NVIM", ":qa<CR>"),
         }
