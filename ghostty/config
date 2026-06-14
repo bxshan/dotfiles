@@ -1,0 +1,28 @@
+# Ghostty config — Linux equivalent of the macOS alacritty.toml in this repo.
+# Docs: https://ghostty.org/docs/config
+
+# Font (same Nerd Font + size as the alacritty config)
+font-family = FiraCode Nerd Font
+font-size = 20
+
+# Gruvbox dark, matching the alacritty gruvbox_dark theme import
+theme = Gruvbox Dark
+
+# Window
+background-opacity = 1.0
+window-padding-x = 3
+window-padding-y = 3
+window-padding-balance = true
+window-width = 100
+window-height = 40
+title = bxshan
+
+# Cursor: solid block, no blink
+cursor-style = block
+cursor-style-blink = false
+
+# Mouse
+mouse-hide-while-typing = true
+
+# Generous scrollback (alacritty used 100000 lines)
+scrollback-limit = 100000000
