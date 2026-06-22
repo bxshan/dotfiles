@@ -2,8 +2,13 @@
 # Docs: https://ghostty.org/docs/config
 
 # Font (same Nerd Font + size as the alacritty config)
+font-family = Comic Mono
 font-family = FiraCode Nerd Font
 font-size = 20
+
+# Chinese: use the monospace CJK face so glyphs stay aligned in the cell grid.
+# Covers CJK punctuation, Ext-A, unified ideographs, compatibility, fullwidth forms.
+font-codepoint-map = U+3000-U+303F,U+3400-U+4DBF,U+4E00-U+9FFF,U+F900-U+FAFF,U+FF00-U+FFEF=Noto Sans Mono CJK SC
 
 # Gruvbox dark, matching the alacritty gruvbox_dark theme import
 theme = Gruvbox Dark
@@ -23,6 +28,7 @@ cursor-style-blink = false
 
 # Mouse
 mouse-hide-while-typing = true
+mouse-scroll-multiplier = 1.5
 
 # Generous scrollback (alacritty used 100000 lines)
 scrollback-limit = 100000000

@@ -22,7 +22,7 @@ keyboard feel comes from **Toshy** here vs native macOS there.
 
 ## The four config layers
 
-- **Terminal — Ghostty** (`ghostty/config`): FiraCode Nerd Font 20pt, Gruvbox Dark.
+- **Terminal — Ghostty** (`ghostty/config`): Comic Mono (FiraCode Nerd Font fallback) 20pt, Gruvbox Dark.
 - **Shell — zsh + oh-my-zsh** (`.zshrc`): theme `bureau`; `zoxide` aliased over
   `cd`; conda env `box` on PATH; aliases `vi`/`i`→nvim, `gcc`=`g++ -std=c++11 -O2`
   (+`gccsa`/`gccsu` sanitizers). Login shell was changed bash → `/usr/bin/zsh`.
