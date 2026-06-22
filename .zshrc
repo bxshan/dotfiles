@@ -10,7 +10,7 @@ alias gavinisdumb="yes "gavin is dumb""
 alias la="ls -a"
 alias ll="ls -l"
 alias matrix="unimatrix -f -s 92 -l kknnsss"
-alias neofetch="neofetch --memory_percent on --memory_unit gib --refresh_rate on --colors 2 7 4 3 7 7 --block_range 0 7 --block_width 5 --block_height 1"
+# alias neofetch="neofetch --memory_percent on --memory_unit gib --refresh_rate on --colors 2 7 4 3 7 7 --block_range 0 7 --block_width 5 --block_height 1"
 alias actf="genact --speed-factor 30"
 alias acts="genact --speed-factor 2"
 alias gcc="g++ -w -std=c++11 -O2 -pedantic -Wfloat-equal -o a.out"
@@ -243,3 +243,14 @@ export CLAUDE_CODE_MAX_OUTPUT_TOKENS=100000
 
 # Force conda box env python
 export PATH="$HOME/miniconda3/envs/box/bin:$PATH"
+
+# cargo
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# Swallow unhandled F5–F12 escape sequences so their trailing `~` terminator
+# doesn't self-insert at the prompt (^[[15~ etc. end in ~, the last printable
+# ASCII char, which matches zsh's `"!"-"~" self-insert` catch-all binding).
+for _seq in '^[[15~' '^[[17~' '^[[18~' '^[[19~' '^[[20~' '^[[21~' '^[[23~' '^[[24~'; do
+  bindkey -s "$_seq" ''
+done
+unset _seq
