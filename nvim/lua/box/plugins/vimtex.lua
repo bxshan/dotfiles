@@ -9,7 +9,7 @@ return {
       ]])
 
       -- Preferred viewer (pick ONE of these two styles):
-      vim.g.vimtex_view_method = "zathura"     -- comment this out if you use Okular below
+      vim.g.vimtex_view_method = "zathura_simple"     -- zathura_simple: no xdotool (X11-only); works on Wayland
 
       -- Generic viewer example (Okular). If you prefer Okular, set method to 'general' and keep these.
       -- vim.g.vimtex_view_method = "general"
@@ -23,6 +23,11 @@ return {
 
       -- Local leader for VimTeX mappings (optional)
       vim.g.maplocalleader = "\\"
+
+      -- Suppress noisy longtable warning in the quickfix list
+      vim.g.vimtex_quickfix_ignore_filters = {
+        "Infinite glue shrinkage found in box being split",
+      }
 
 
     end
