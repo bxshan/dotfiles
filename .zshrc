@@ -275,3 +275,5 @@ add-zsh-hook precmd __cmd_ms_precmd
 # starship prompt (replaces the oh-my-zsh theme). Guarded so a missing starship
 # binary leaves a working shell instead of erroring on every prompt.
 command -v starship >/dev/null && eval "$(starship init zsh)"
+export PATH="/Users/box/miniconda3/envs/box/bin:$PATH"
+export PATH="/Library/TeX/texbin:$PATH"
