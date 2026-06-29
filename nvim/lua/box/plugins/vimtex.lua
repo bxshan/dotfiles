@@ -24,8 +24,8 @@ return {
       -- Suppress noisy longtable warning in the quickfix list
       vim.g.vimtex_quickfix_ignore_filters = {
         "Infinite glue shrinkage found in box being split",
-      }, -- Kept your filter, adopted comma from incoming
+      }
 
-    end, -- Adopted comma from incoming
-  }, -- Adopted structure from incoming
+    end,
+  },
 }
