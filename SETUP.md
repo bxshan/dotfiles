@@ -9,6 +9,7 @@ symlinks into it:
 ~/.tmux.conf    → ~/dotfiles/tmux/tmux.conf
 ~/.config/nvim  → ~/dotfiles/nvim
 ~/.config/ghostty/config → ~/dotfiles/ghostty/config
+~/.config/starship.toml  → ~/dotfiles/starship.toml
 ```
 
 Editing a symlinked file edits the repo directly — commit from `~/dotfiles`.
