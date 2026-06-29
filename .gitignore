@@ -15,6 +15,20 @@ kitty/
 neovide/
 unused_nvim/
 alacritty/themes/
+cagent/
+fontforge/
+ghostty/
+uv/
+
+# LATEX GENERATED FILES
+nvim/foo.aux
+nvim/foo.fdb_latexmk
+nvim/foo.fls
+nvim/foo.log
+nvim/foo.pdf
+nvim/foo.synctex.gz
+nvim/foo.tex
+
 
 # I DONT KNOW WHAT THIS DOES
 nvim/usage_data.json
