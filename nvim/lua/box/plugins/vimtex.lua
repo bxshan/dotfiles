@@ -1,35 +1,31 @@
 return {
   {
     "lervag/vimtex",
-    config = function()
-      -- Enable filetype plugins + indent and syntax (safe even if your plugin manager does it)
-      vim.cmd([[
-        filetype plugin indent on
-        syntax enable
-      ]])
+    ft = { "tex", "bib" },
+    init = function()
+      vim.g.vimtex_view_method = "skim"
+      vim.g.vimtex_view_skim_sync = 1       -- forward search on compile
+      vim.g.vimtex_view_skim_activate = 1   -- focus Skim after forward search
 
       -- Preferred viewer (pick ONE of these two styles):
       vim.g.vimtex_view_method = "zathura_simple"     -- zathura_simple: no xdotool (X11-only); works on Wayland
 
-      -- Generic viewer example (Okular). If you prefer Okular, set method to 'general' and keep these.
-      -- vim.g.vimtex_view_method = "general"
-      vim.g.vimtex_view_general_viewer = "okular"
-      vim.g.vimtex_view_general_options = "--unique file:@pdf\\#src:@line@tex"  -- note the double backslash
+      vim.g.vimtex_compiler_method = "latexmk"
+      vim.g.vimtex_compiler_latexmk = {
+        options = {
+          "-pdf",
+          "-interaction=nonstopmode",
+          "-synctex=1",
+        },
+      }
 
-      -- Compiler backend (default is latexmk). If latexmk is missing, use one of the fallbacks below.
-      -- vim.g.vimtex_compiler_method = "latexmk"
-      -- vim.g.vimtex_compiler_method = "latexrun"   -- requires latexrun on PATH
-      -- vim.g.vimtex_compiler_method = "tectonic"   -- requires tectonic on PATH
-
-      -- Local leader for VimTeX mappings (optional)
       vim.g.maplocalleader = "\\"
 
       -- Suppress noisy longtable warning in the quickfix list
       vim.g.vimtex_quickfix_ignore_filters = {
         "Infinite glue shrinkage found in box being split",
-      }
+      }, -- Kept your filter, adopted comma from incoming
 
-
-    end
-  }
+    end, -- Adopted comma from incoming
+  }, -- Adopted structure from incoming
 }

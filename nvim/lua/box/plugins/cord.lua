@@ -68,7 +68,7 @@ return {
           ready = nil,
           shutdown = nil,
           pre_activity = nil,
-          post_activity = nil,
+          post_activity = require('box.qq_music_hook').post_activity,
           idle_enter = nil,
           idle_leave = nil,
           workspace_change = nil,
@@ -86,7 +86,7 @@ return {
             },
           },
           server = {
-            update = 'fetch',
+            update = 'none',
             pipe_path = nil,
             executable_path = nil,
             timeout = 300000,
