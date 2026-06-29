@@ -29,6 +29,12 @@ nvim/foo.pdf
 nvim/foo.synctex.gz
 nvim/foo.tex
 
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.pdf
+*.synctex.gz
 
 # I DONT KNOW WHAT THIS DOES
 nvim/usage_data.json
