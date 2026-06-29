@@ -13,7 +13,7 @@ alias matrix="unimatrix -f -s 92 -l kknnsss"
 # alias neofetch="neofetch --memory_percent on --memory_unit gib --refresh_rate on --colors 2 7 4 3 7 7 --block_range 0 7 --block_width 5 --block_height 1"
 alias actf="genact --speed-factor 30"
 alias acts="genact --speed-factor 2"
-alias gcc="g++ -w -std=c++11 -O2 -pedantic -Wfloat-equal -o a.out"
+alias gcc="g++ -B/usr/bin -w -std=c++11 -O2 -pedantic -Wfloat-equal -o a.out"
 alias zoxidelist="zoxide query -l -s"
 alias renamecases="python ~/.config/usacotcrename.py"
 # debug
@@ -79,7 +79,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 
-ZSH_THEME="bureau"
+ZSH_THEME=""   # empty: oh-my-zsh sets no prompt; starship handles it (see end of file)
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -254,3 +254,24 @@ for _seq in '^[[15~' '^[[17~' '^[[18~' '^[[19~' '^[[20~' '^[[21~' '^[[23~' '^[[2
   bindkey -s "$_seq" ''
 done
 unset _seq
+
+# Export each command's total run time in whole milliseconds as CMD_DURATION_MS,
+# for starship's custom.cmd_ms module (the experimental prompt shows total-ms; the
+# default prompt ignores this var). Registered BEFORE starship init so this precmd
+# runs first and the value is set when starship builds the prompt.
+zmodload zsh/datetime
+autoload -Uz add-zsh-hook
+__cmd_ms_preexec() { __cmd_ms_start=$EPOCHREALTIME }
+__cmd_ms_precmd() {
+  if [[ -n $__cmd_ms_start ]]; then
+    printf -v CMD_DURATION_MS '%.0f' $(( (EPOCHREALTIME - __cmd_ms_start) * 1000 ))
+    export CMD_DURATION_MS
+    unset __cmd_ms_start
+  fi
+}
+add-zsh-hook preexec __cmd_ms_preexec
+add-zsh-hook precmd __cmd_ms_precmd
+
+# starship prompt (replaces the oh-my-zsh theme). Guarded so a missing starship
+# binary leaves a working shell instead of erroring on every prompt.
+command -v starship >/dev/null && eval "$(starship init zsh)"
