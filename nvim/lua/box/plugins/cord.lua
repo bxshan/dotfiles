@@ -74,7 +74,7 @@ return {
           workspace_change = nil,
           buf_enter = nil,
         },
-        extensions = nil,
+        extensions = { 'tmux' },   -- auto hide/idle Discord activity when you detach the tmux session
         advanced = {
           plugin = {
             autocmds = true,
