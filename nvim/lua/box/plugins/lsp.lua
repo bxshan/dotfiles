@@ -31,7 +31,7 @@ return {
         local opts = { buffer = bufnr }
 
         vim.keymap.set({'n', 'x'}, 'gq', function()
-          vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
+          require('conform').format({ async = false, lsp_format = 'fallback', timeout_ms = 10000 })
         end, opts)
 
         vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
@@ -43,7 +43,7 @@ return {
         vim.keymap.set('n', 'gs', vim.lsp.buf.signature_help, opts)
         vim.keymap.set('n', '<F2>', vim.lsp.buf.rename, opts)
         vim.keymap.set({'n', 'x'}, '<F3>', function()
-          vim.lsp.buf.format({ async = true })
+          require('conform').format({ async = true, lsp_format = 'fallback' })
         end, opts)
         vim.keymap.set('n', '<F4>', vim.lsp.buf.code_action, opts)
       end
