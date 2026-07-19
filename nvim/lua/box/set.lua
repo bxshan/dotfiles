@@ -16,6 +16,9 @@ vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
+vim.opt.ignorecase = true                -- case-insensitive search...
+vim.opt.smartcase = true                 -- ...unless the query has a capital
+vim.opt.inccommand = "split"             -- live preview of :substitute
 
 vim.opt.termguicolors = true
 
@@ -26,6 +29,11 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.opt.showmode = false
+
+vim.opt.splitright = true                -- vertical splits open to the right
+vim.opt.splitbelow = true                -- horizontal splits open below
+
+vim.o.winborder = "rounded"              -- rounded border on all floating windows
 
 -- folds --
 vim.opt.foldmethod = "expr"

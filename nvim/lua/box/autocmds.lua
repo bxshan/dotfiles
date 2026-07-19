@@ -1,5 +1,11 @@
 -- AUTOCMDS --
 
+-- Briefly highlight yanked text
+vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight yanked text',
+  callback = function() vim.hl.on_yank() end,
+})
+
 -- C/C++ specific remap
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "cpp", "c", "cc" },
