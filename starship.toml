@@ -9,6 +9,14 @@ format = "$username$hostname$directory$character"
 right_format = "$git_branch$git_status${custom.cmd_ms}$time"
 add_newline = true
 
+# Cap any single module's subprocess at 1000ms (default is 500). Normal repos here
+# render git in ~30ms, so this never triggers; it only guards against a prompt
+# stall in a pathologically large repo. TRADEOFF: in a repo where `git status`
+# genuinely exceeds this, the git_status segment is skipped (branch still shows).
+# Set to 1000 because the 46 GB research2026 tree's cold-cache git status hits
+# 200–500ms, which tripped the old 200ms cap and made the segment flicker out.
+command_timeout = 1000
+
 [username]
 show_always = true                     # default only shows for root / over SSH
 style_user = "bold #a9b665"            # green
@@ -39,6 +47,7 @@ style = "#d8a657"                      # yellow
 format = "[$branch]($style) "
 
 [git_status]
+ignore_submodules = true               # skip per-submodule status scan (pure speedup; no effect when there are no submodules)
 style = "#e78a4e"                      # orange
 format = '([\[$all_status$ahead_behind\]]($style) )'
 ahead    = "^"
@@ -52,7 +61,7 @@ renamed  = "r"
 # cmd_duration can only render unit chunks (2s500ms), never a flat total.
 [custom.cmd_ms]
 command = 'printf "%sms" "${CMD_DURATION_MS:-0}"'
-when = "true"
+when = true   # boolean, not the string "true": avoids a second `sh -c` fork every prompt
 style = "#928374"                      # gray
 format = "[$output]($style) "
 

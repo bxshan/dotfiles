@@ -149,6 +149,13 @@ plugins=(
   # you-should-use
 )
 
+# Disable oh-my-zsh's async git prompt. It runs a background `git status` after
+# every command and then forces `zle reset-prompt`, which makes starship redraw
+# the whole prompt a SECOND time (the visible lag after a command finishes).
+# starship already draws git and ZSH_THEME="", so this async work is unused.
+# Keeps all git aliases; must be set before oh-my-zsh is sourced.
+zstyle ':omz:alpha:lib:git' async-prompt no
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
