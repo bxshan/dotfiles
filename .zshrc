@@ -1,12 +1,13 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+typeset -U path
 
 # # # # # #
 # ALIASES #
 # # # # # #
 alias ipaddr="curl http://ipecho.net/plain; echo"
-alias gavinisdumb="yes "gavin is dumb""
+alias gavinisdumb='yes "gavin is dumb"'
 alias la="ls -a"
 alias ll="ls -l"
 alias matrix="unimatrix -f -s 92 -l kknnsss"
@@ -200,7 +201,6 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-export PATH="$HOME/miniconda3/envs/box/bin:$PATH"
 
 # JAVA INIT #
 if [[ "$OSTYPE" == darwin* ]]; then
@@ -209,7 +209,7 @@ elif command -v javac >/dev/null 2>&1; then
   # Linux: derive JAVA_HOME from the resolved javac binary
   export JAVA_HOME="$(dirname "$(dirname "$(readlink -f "$(command -v javac)")")")"
 fi
-[ -n "$JAVA_HOME" ] && export PATH="$JAVA_HOME/bin:$PATH:."
+[ -n "$JAVA_HOME" ] && export PATH="$JAVA_HOME/bin:$PATH"
 export CLASSPATH=".${CLASSPATH:+:$CLASSPATH}"
 
 # # # # # #
@@ -245,7 +245,7 @@ export NVM_DIR="$HOME/.nvm"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-alias claude-mem='$HOME/.bun/bin/bun "$HOME/.claude/plugins/cache/thedotmack/claude-mem/12.1.0/scripts/worker-service.cjs"'
+alias claude-mem='$HOME/.bun/bin/bun "$HOME/.claude/plugins/cache/thedotmack/claude-mem/13.8.0/scripts/worker-service.cjs"'
 export CLAUDE_CODE_MAX_OUTPUT_TOKENS=100000
 
 # Force conda box env python

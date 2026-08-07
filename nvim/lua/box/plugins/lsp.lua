@@ -74,6 +74,19 @@ return {
         filetypes = { 'python' },
         root_markers = { '.git', 'pyproject.toml', 'setup.py' },
         capabilities = default_capabilities,
+        settings = {
+          pylsp = {
+            plugins = {
+              pycodestyle = {
+                -- 'ignore' replaces pycodestyle's DEFAULT_IGNORE, so restate it here
+                ignore = {
+                  'E501',  -- line too long
+                  'E121', 'E123', 'E126', 'E226', 'E24', 'E704', 'W503', 'W504',
+                },
+              },
+            },
+          },
+        },
       }
 
       vim.lsp.config.clangd = {
