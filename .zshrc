@@ -21,9 +21,9 @@ alias renamecases="python ~/.config/usacotcrename.py"
 alias gccsa="gcc -fsanitize=address"
 alias gccsu="gcc -fsanitize=undefined"
 # java checkstyle
-alias checkstyle="java -jar ~/bin/checkstyle-13.0.0-all.jar"
+[ -f ~/bin/checkstyle-13.0.0-all.jar ] && alias checkstyle="java -jar ~/bin/checkstyle-13.0.0-all.jar"
 # mars for mips asm
-alias mars="java -jar ~/bin/mars.jar nc"
+[ -f ~/bin/mars.jar ] && alias mars="java -jar ~/bin/mars.jar nc"
 
 # IF USING NVIM OR VIM
 alias vi="nvim"
@@ -156,6 +156,11 @@ plugins=(
 # starship already draws git and ZSH_THEME="", so this async work is unused.
 # Keeps all git aliases; must be set before oh-my-zsh is sourced.
 zstyle ':omz:alpha:lib:git' async-prompt no
+
+# Pin the completion dump filename. oh-my-zsh names .zcompdump after $HOST, and
+# conda overrides $HOST, which makes a second dump file fork off. Must be set
+# before oh-my-zsh is sourced.
+export ZSH_COMPDUMP="$HOME/.zcompdump-box-$ZSH_VERSION"
 
 source $ZSH/oh-my-zsh.sh
 
