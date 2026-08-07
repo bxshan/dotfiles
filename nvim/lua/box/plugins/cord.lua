@@ -1,7 +1,6 @@
 return {
   {
     'vyfor/cord.nvim',
-    build = './build || .\\\\build',
     config = function()
       require('cord').setup 
       {
