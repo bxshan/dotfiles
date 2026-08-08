@@ -34,6 +34,18 @@ keyboard feel comes from **Toshy** here vs native macOS there.
   which-key, competitest; LSPs clangd/jdtls/lua_ls/pylsp. Must be the **0.12.3
   tarball** (not apt) + tree-sitter CLI.
 
+### tmux session persistence (resurrect + continuum)
+
+Sessions survive reboots via TPM plugins. One-time per machine:
+
+```sh
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```
+
+Then inside tmux press `` ` ``+`I` once to install the plugins. After that:
+`` ` ``+`Ctrl-s` saves the environment, `` ` ``+`Ctrl-r` restores it, and
+continuum autosaves every 15 min and auto-restores when the server starts.
+
 ## Desktop (GNOME) — mostly stock
 
 - **Workspaces = macOS Spaces**: dynamic, switch with `Super+PageUp/PageDown`
