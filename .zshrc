@@ -289,3 +289,18 @@ add-zsh-hook precmd __cmd_ms_precmd
 command -v starship >/dev/null && eval "$(starship init zsh)"
 export PATH="/Users/box/miniconda3/envs/box/bin:$PATH"
 export PATH="/Library/TeX/texbin:$PATH"
+
+# Clear xterm mouse/focus reporting at every prompt. When an ssh link dies while
+# a remote TUI holds these modes, the reset never crosses the dead socket and
+# THIS terminal stays in mouse-reporting mode -- clicks then arrive as
+# ^[[<0;40;12M and focus changes as ^[[I / ^[[O, typed into the command line.
+# (tmux with `mouse on` sets 1000/1002/1006 on the *client's* terminal, so an
+# `ssh host` + `tmux attach` that drops strands them here.) Nothing needs these
+# at a bare prompt: every TUI enables what it wants on startup, so clearing here
+# restores the correct idle state and native terminal selection.
+#   1000 click  1002 drag  1003 any-motion  1004 focus  1006/1015 coord encodings
+_reset_mouse_reporting() {
+  printf '\e[?1000l\e[?1002l\e[?1003l\e[?1004l\e[?1006l\e[?1015l'
+}
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd _reset_mouse_reporting
