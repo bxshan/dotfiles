@@ -6,9 +6,11 @@ font-family = Comic Mono
 font-family = FiraCode Nerd Font
 font-size = 20
 
-# Chinese: use the monospace CJK face so glyphs stay aligned in the cell grid.
+# Chinese: calligraphic UKai, matching the system-wide fontconfig preference.
+# (Was Noto Sans Mono CJK SC; UKai is dual-width but CJK cells are double-width
+# anyway, so the grid stays aligned in practice.)
 # Covers CJK punctuation, Ext-A, unified ideographs, compatibility, fullwidth forms.
-font-codepoint-map = U+3000-U+303F,U+3400-U+4DBF,U+4E00-U+9FFF,U+F900-U+FAFF,U+FF00-U+FFEF=Noto Sans Mono CJK SC
+font-codepoint-map = U+3000-U+303F,U+3400-U+4DBF,U+4E00-U+9FFF,U+F900-U+FAFF,U+FF00-U+FFEF=AR PL UKai CN
 
 # Gruvbox dark, matching the alacritty gruvbox_dark theme import
 theme = Gruvbox Dark
