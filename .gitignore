@@ -17,7 +17,11 @@ unused_nvim/
 alacritty/themes/
 cagent/
 fontforge/
-ghostty/
+# ghostty/* not ghostty/: git cannot re-include a file whose parent DIRECTORY is
+# excluded, so `!ghostty/config` only takes effect if the contents are excluded
+# rather than the directory itself.
+ghostty/*
+!ghostty/config
 uv/
 
 # LATEX GENERATED FILES
