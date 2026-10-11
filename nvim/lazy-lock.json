@@ -28,6 +28,7 @@
   "mason.nvim": { "branch": "main", "commit": "2a6940af80375532e5e9e7c1f2fc6319a1b7a69d" },
   "milli.nvim": { "branch": "main", "commit": "6e94122fcc783bcee7d30b05cedc53beddb01104" },
   "modes.nvim": { "branch": "main", "commit": "2cd194d1033ba391d87d386735e15963adbc5f51" },
+  "monet": { "branch": "main", "commit": "8fba02c535a408d5e5255251665325a69fa12a8e" },
   "monochrome.nvim": { "branch": "main", "commit": "2de78d9688ea4a177bcd9be554ab9192337d35ff" },
   "netrw.nvim": { "branch": "master", "commit": "3f643df59951d9adc4cf348cefe435fcdb5a3671" },
   "nui.nvim": { "branch": "main", "commit": "de740991c12411b663994b2860f1a4fd0937c130" },
