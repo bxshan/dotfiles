@@ -304,3 +304,7 @@ _reset_mouse_reporting() {
 }
 autoload -Uz add-zsh-hook
 add-zsh-hook precmd _reset_mouse_reporting
+
+# Keep a copy of box-pc's Cloudflare tunnel URL outside ~/Documents for the
+# launchd Rex forward (com.box.rex-boxpc-forward), which can't read the vault.
+{ cp -f "$HOME/Documents/Obsidian Vault/.tunnel/boxpc-cf-url.txt" "$HOME/.cache/boxpc-cf-url.txt" 2>/dev/null; } &!
