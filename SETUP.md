@@ -10,6 +10,7 @@ symlinks into it:
 ~/.config/nvim  → ~/dotfiles/nvim
 ~/.config/ghostty/config → ~/dotfiles/ghostty/config
 ~/.config/starship.toml  → ~/dotfiles/starship.toml
+~/.config/herdr/config.toml → ~/dotfiles/herdr/config.toml
 ```
 
 Editing a symlinked file edits the repo directly — commit from `~/dotfiles`.

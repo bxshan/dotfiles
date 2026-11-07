@@ -1,0 +1,26 @@
+onboarding = false
+
+[ui.toast]
+delivery = "system"
+
+[ui.sound]
+enabled = true
+
+[theme]
+name = "gruvbox-light"
+auto_switch = false
+
+# Keybinds carried over from tmux (~/dotfiles/tmux/tmux.conf) and Rex:
+# backtick is the prefix, and pressing it twice types a literal backtick
+# (herdr does that for whatever the prefix is, like tmux's send-prefix).
+[keys]
+prefix = "backtick"
+split_vertical = "prefix+|"     # tmux: bind | split-window -h (side by side)
+split_horizontal = "prefix+-"   # tmux: bind - split-window -v (stacked)
+reload_config = "prefix+r"      # tmux: bind r source-file
+resize_mode = "prefix+shift+r"  # herdr's default for prefix+r, moved off r
+next_workspace = "prefix+n"     # n/p move between spaces (herdr calls them workspaces)
+previous_workspace = "prefix+p"
+next_tab = "prefix+)"           # )/( move between tabs within a space (default was n/p)
+previous_tab = "prefix+("
+# focus_pane_left/down/up/right are already prefix+h/j/k/l by default.
