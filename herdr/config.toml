@@ -7,7 +7,7 @@ delivery = "system"
 enabled = true
 
 [theme]
-name = "gruvbox-light"
+name = "gruvbox"
 auto_switch = false
 
 # Keybinds carried over from tmux (~/dotfiles/tmux/tmux.conf) and Rex:
@@ -31,6 +31,9 @@ close_pane = ""                 # prefix+x asks first instead (command below)
 [[keys.command]]
 key = "prefix+x"
 type = "popup"
-command = "bash \"$HOME/dotfiles/herdr/confirm-close.sh\""
+command = "bash \"$HOME/.config/herdr/confirm-close.sh\""
 width = 60
 height = 5
+
+[ui]
+status_indicators = "symbols"

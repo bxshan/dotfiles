@@ -11,6 +11,7 @@ symlinks into it:
 ~/.config/ghostty/config → ~/dotfiles/ghostty/config
 ~/.config/starship.toml  → ~/dotfiles/starship.toml
 ~/.config/herdr/config.toml → ~/dotfiles/herdr/config.toml
+~/.config/herdr/confirm-close.sh → ~/dotfiles/herdr/confirm-close.sh
 ```
 
 Editing a symlinked file edits the repo directly — commit from `~/dotfiles`.
