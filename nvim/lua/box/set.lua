@@ -47,3 +47,11 @@ vim.opt.foldnestmax = 3
 
 -- default colorscheme
 vim.cmd.colorscheme('gruvbox')
+
+-- Inside a herdr pane (or plain SSH) the pane may still see box-pc's own
+-- DISPLAY/WAYLAND_DISPLAY, so nvim would copy to box-pc's clipboard instead
+-- of the machine you are typing on. OSC 52 sends the yank through the
+-- terminal, and herdr forwards it to the client that last sent input.
+if vim.env.HERDR_PANE_ID or vim.env.SSH_TTY then
+  vim.g.clipboard = "osc52"
+end
