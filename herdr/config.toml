@@ -25,6 +25,7 @@ next_tab = "prefix+)"           # )/( move between tabs within a space (default 
 previous_tab = "prefix+("
 # focus_pane_left/down/up/right are already prefix+h/j/k/l by default.
 close_pane = ""                 # prefix+x asks first instead (command below)
+close_tab = ""                  # prefix+shift+x asks first instead (command below)
 
 # prefix+x: ask y/N before closing the focused pane. The script says when that
 # also closes the tab (its only pane) or the space (its only tab).
@@ -32,6 +33,14 @@ close_pane = ""                 # prefix+x asks first instead (command below)
 key = "prefix+x"
 type = "popup"
 command = "bash \"$HOME/.config/herdr/confirm-close.sh\""
+width = 60
+height = 5
+
+# prefix+shift+x: ask y/N before closing the whole focused tab.
+[[keys.command]]
+key = "prefix+shift+x"
+type = "popup"
+command = "bash \"$HOME/.config/herdr/confirm-close.sh\" tab"
 width = 60
 height = 5
 
