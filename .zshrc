@@ -46,7 +46,13 @@ usage() {
   if [[ $OSTYPE == darwin* ]]; then
     open "$url"
   else
-    xdg-open "$url" >/dev/null 2>&1
+    # Shells started by herdr, tmux or ssh do not carry the desktop session's
+    # variables (WAYLAND_DISPLAY and friends), and xdg-open then finds no
+    # browser. Borrow them from the systemd user session, which has them
+    # whenever the desktop is up.
+    local -a sess
+    [[ -n $WAYLAND_DISPLAY$DISPLAY ]] || sess=(${(f)"$(systemctl --user show-environment 2>/dev/null | grep -E '^(WAYLAND_DISPLAY|DISPLAY|DBUS_SESSION_BUS_ADDRESS|HYPRLAND_INSTANCE_SIGNATURE)=')"})
+    env $sess xdg-open "$url" >/dev/null
   fi
 }
 
