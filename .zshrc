@@ -29,6 +29,27 @@ alias gccsu="gcc -fsanitize=undefined"
 alias vi="nvim"
 alias vir="nvim -R"
 alias i="nvim"
+
+# usage: open box-pc's usage-history page (per-process CPU/GPU/RAM/disk) in
+# the browser. The page needs a secret key in its URL. On box-pc the key is
+# read from its file; on any other tailnet machine it is fetched from box-pc
+# over ssh each time, so a rotated key keeps working with nothing to update.
+usage() {
+  local f=~/.config/usage-history/view-token key
+  if [[ -r $f ]]; then
+    key=$(<$f)
+  else
+    key=$(ssh bxshan@box-pc 'cat ~/.config/usage-history/view-token')
+  fi
+  [[ -n $key ]] || { echo "usage: could not read the view key from box-pc" >&2; return 1; }
+  local url="https://box-pc.tail6c75c6.ts.net/?key=$key"
+  if [[ $OSTYPE == darwin* ]]; then
+    open "$url"
+  else
+    xdg-open "$url" >/dev/null 2>&1
+  fi
+}
+
 # gh copilot aliases (only if gh + the copilot extension are installed & authed)
 command -v gh >/dev/null 2>&1 && gh extension list 2>/dev/null | grep -q "copilot" && eval "$(gh copilot alias -- zsh)"
 
@@ -250,7 +271,6 @@ export NVM_DIR="$HOME/.nvm"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-alias claude-mem='$HOME/.bun/bin/bun "$HOME/.claude/plugins/cache/thedotmack/claude-mem/13.8.0/scripts/worker-service.cjs"'
 export CLAUDE_CODE_MAX_OUTPUT_TOKENS=100000
 
 # Force conda box env python
