@@ -68,6 +68,25 @@ move_test_cases() {
   local dir="$1"
 
   if [[ ! -d "$dir" ]]; then
+# todo: open the weekplan grid (the weekly planner that lives on box-pc) from
+# any other machine, over ssh; the other machine keeps no copy. box-pc runs
+# its own ~/.local/bin/todo directly, so the function is only defined where
+# that file is missing. Tailscale first; ssh exits with 255 only when it can't
+# connect (any other code is the grid's own), and only then is the Cloudflare
+# tunnel host box-pc-cf tried. `-t` gives the full-screen grid a terminal.
+if [[ ! -x ~/.local/bin/todo ]]; then
+  todo() {
+    ssh -t bxshan@box-pc /home/bxshan/.local/bin/todo "$@"
+    local rc=$?
+    if (( rc == 255 )); then
+      print -u2 "todo: box-pc not reachable over Tailscale; trying box-pc-cf"
+      ssh -t box-pc-cf /home/bxshan/.local/bin/todo "$@"
+      rc=$?
+    fi
+    return $rc
+  }
+fi
+
     echo "Directory does not exist: $dir"
     return 1
   fi
