@@ -56,18 +56,6 @@ usage() {
   fi
 }
 
-# gh copilot aliases (only if gh + the copilot extension are installed & authed)
-command -v gh >/dev/null 2>&1 && gh extension list 2>/dev/null | grep -q "copilot" && eval "$(gh copilot alias -- zsh)"
-
-# FOR NEOVIDE
-# alias vi="neovide --neovim-bin /opt/homebrew/bin/nvim"
-
-# files rename for competitest plugin:
-# [letter]_["input" or "output"][num].txt -> [letter].[num].["in"/"out"]
-move_test_cases() {
-  local dir="$1"
-
-  if [[ ! -d "$dir" ]]; then
 # todo: open the weekplan grid (the weekly planner that lives on box-pc) from
 # any other machine, over ssh; the other machine keeps no copy. box-pc runs
 # its own ~/.local/bin/todo directly, so the function is only defined where
@@ -87,6 +75,18 @@ if [[ ! -x ~/.local/bin/todo ]]; then
   }
 fi
 
+# gh copilot aliases (only if gh + the copilot extension are installed & authed)
+command -v gh >/dev/null 2>&1 && gh extension list 2>/dev/null | grep -q "copilot" && eval "$(gh copilot alias -- zsh)"
+
+# FOR NEOVIDE
+# alias vi="neovide --neovim-bin /opt/homebrew/bin/nvim"
+
+# files rename for competitest plugin:
+# [letter]_["input" or "output"][num].txt -> [letter].[num].["in"/"out"]
+move_test_cases() {
+  local dir="$1"
+
+  if [[ ! -d "$dir" ]]; then
     echo "Directory does not exist: $dir"
     return 1
   fi
