@@ -53,6 +53,18 @@ usage() {
     local -a sess
     [[ -n $WAYLAND_DISPLAY$DISPLAY ]] || sess=(${(f)"$(systemctl --user show-environment 2>/dev/null | grep -E '^(WAYLAND_DISPLAY|DISPLAY|DBUS_SESSION_BUS_ADDRESS|HYPRLAND_INSTANCE_SIGNATURE)=')"})
     env $sess xdg-open "$url" >/dev/null
+    # Chrome adds the tab to a window it already has, which is often on
+    # another workspace, so nothing seems to happen. On Hyprland, jump to the
+    # window once the page has loaded and its title has appeared (up to 3 s).
+    if command -v hyprctl >/dev/null; then
+      local i
+      for i in 1 2 3 4 5 6; do
+        sleep 0.5
+        # Hyprland's pattern must match the whole title, hence the ".*".
+        [[ $(env $sess hyprctl dispatch focuswindow 'title:Usage history.*' 2>/dev/null) == ok ]] && break
+      done
+    fi
+    return 0
   fi
 }
 
