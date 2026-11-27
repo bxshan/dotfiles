@@ -33,6 +33,11 @@ local function read_state()
 end
 
 function M.post_activity(opts, activity)
+  -- Discord ranks "Playing" cards above "Listening" ones and shows only one
+  -- Playing card at a time. Demoting Neovim to "Watching" lets the QQ Music
+  -- "Listening to" card (qqpresence.js) sort above it while both stay visible.
+  activity.type = 'watching'
+
   local dbg = io.open("/tmp/qq_hook_debug.log", "a")
   if dbg then
     local state_exists = io.open(STATE_PATH, "r")
